@@ -1,0 +1,46 @@
+{
+  "status": "success",
+  "results": 2,
+  "data": [
+    {
+      "role": "member",
+      "groups": [
+        { "_id": "5e9f2019f3694716634caee6", "groupName": "Friends" },
+        { "_id": "5e9f2207d79b3a2a9b83f6cd", "groupName": "Duke" }
+      ],
+      "_id": "5e9dcfa2e975d41a6793c96a",
+      "firstName": "Beth",
+      "lastName": "Besner",
+      "personalEmail": "beth.besner@gmail.com",
+      "dateAdded": "2020-04-20T16:36:50.476Z",
+      "associatedRelations": [
+        {
+          "_id": "5ea082b8a4c0f87212c4dc14",
+          "relationType": "sister",
+          "relationName": "Lynn"
+        },
+        {
+          "_id": "5ea082b8a4c0f87212c4dc15",
+          "relationType": "sister",
+          "relationName": "Laurie"
+        }
+      ],
+      "__v": 0,
+      "pointPerson": "5e9dcfb2e975d41a6793c96b",
+      "id": "5e9dcfa2e975d41a6793c96a"
+    },
+    {
+      "role": "member",
+      "groups": [],
+      "_id": "5e9dd202dd1fdd1d48d211d1",
+      "firstName": "Testy",
+      "lastName": "Testerson",
+      "personalEmail": "testy@gmail.com",
+      "pronouns": "he/him",
+      "dateAdded": "2020-04-20T16:46:58.993Z",
+      "associatedRelations": [],
+      "__v": 0,
+      "id": "5e9dd202dd1fdd1d48d211d1"
+    }
+  ]
+}

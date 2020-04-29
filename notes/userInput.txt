@@ -1,0 +1,32 @@
+User Input
+
+For form input:
+
+In render/return:
+<form onSubmit={this.onFormSubmit}>
+    //no parentheses for event handler callback
+    <input onChange={this.customMethod} />
+</form>
+
+customMethod:
+    customMethod(event){
+        do something with: event.target.value
+}
+
+onFormSubmit(event){
+    //do stuff!
+}
+
+
+
+events:
+1. onChange
+2. onSubmit
+3. onInput
+4. onSelect
+5. onBlur
+6. onClick
+
+Controlled element:
+You update the value of the input field based on the prop element which is being updated
+by the onChange event using setState.

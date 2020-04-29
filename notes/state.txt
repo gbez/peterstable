@@ -1,0 +1,21 @@
+State: JS Object that is relevant only to component.
+
+Rules of State
+    1. Only usable with Class Components.
+    2. Updating State will cause component to re-render
+    3. State must be initialized when component is first created.
+    4. State can only can only be updated using 'setState'.
+
+
+App Lifecycle:
+    1. JS file loaded
+    2. Instance of App Component created
+    3. App Component constructor called
+    4. State object is created and assigned this.state properties.
+    5. Query is made.
+    6. React calls component render method
+    7. App returns JSX, gets rendered as HTML
+    8. Result of query returned
+    9. We update state object
+    10. React calls render a second time
+    11. Render returns JSX 

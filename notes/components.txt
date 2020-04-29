@@ -1,0 +1,22 @@
+Components
+
+- We don't want conditionals in render function, create helper method to take care of logic.
+
+- Must pass in props to constructor and super.
+
+- Must instantiate state in constructor.
+
+- Props are read only
+
+- top down data flow. There should be a single source of truth for any data that changes.
+
+There are class based componenets and non-class based componenets.
+
+We use a constructor with props to instantiate state data.
+We also need to write super(props) and bind class Methods.
+
+We set empty state data and then re-render and do data operations in componenetDidMount lifecycle method.
+
+We bind form actions and input actions to custom methods that take care of update and post actions.
+
+We must be wary of the 'this' object and what it is referencing.

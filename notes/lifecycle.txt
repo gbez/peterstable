@@ -1,0 +1,15 @@
+Lifecycle
+
+1. Constructor
+2. Render
+3. Content Visible on Screen
+4. componenetDidMount
+    a. called immediately after component first get rendered on screen.
+5. Sit and wait for updates
+6. componentDidUpdate
+7. Sit and wait until component is no longer shown
+8. componentWillUnmount
+
+Why Lifecycle methods?
+-Centralizes functions in certain areas. componenetDidMount will always do data loading functions.
+-It leads to cleaner code.
