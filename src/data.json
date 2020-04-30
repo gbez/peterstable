@@ -1,6 +1,30 @@
 {
   "status": "success",
   "results": 2,
+  "actionItems": [
+    {
+      "_id": "5e9dcfa2e975d41a6793c96a",
+      "link": "www.google.com"
+    },
+    {
+      "_id": "5e9dd202dd1fdd1d48d211d1",
+      "link": "www.facebook.com"
+    },
+    {
+      "_id": "5e9f2019f3694716634caee6",
+      "link": "www.twitter.com"
+    }
+  ],
+  "groups": [
+    {
+      "_id": "5e9f2019f3694716634caee6",
+      "groupName": "Friends"
+    },
+    {
+      "_id": "5e9f2207d79b3a2a9b83f6cd",
+      "groupName": "Duke"
+    }
+  ],
   "data": [
     {
       "role": "member",

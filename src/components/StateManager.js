@@ -9,20 +9,15 @@ class StateManager extends Component {
   constructor(props) {
     super(props);
     //instantiate states
+    //PageName should be a state
   }
 
   render() {
     return (
       <div className="wrapper">
-        <div className="nav">
-          <NavBar />
-        </div>
-        <div className="sidebar">
-          <Sidebar />
-        </div>
-        <div className="page">
-          <Page pageName="relationships" />
-        </div>
+        <NavBar />
+        <Sidebar />
+        <Page pageName="relationships" />
       </div>
     );
   }
