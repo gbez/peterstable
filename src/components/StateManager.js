@@ -3,6 +3,7 @@ import NavBar from "./nav/NavBar";
 import Sidebar from "./sidebar/Sidebar";
 import Page from "./pages/Page";
 import Modal from "./Modal";
+import data from "../data.json";
 import DocumentModal from "./utilities/modals/DocumentModal/DocumentModal";
 import DocumentModalFooter from "./utilities/modals/DocumentModal/DocumentModalFooter";
 
@@ -21,6 +22,10 @@ class StateManager extends Component {
     super(props);
     this.state = {
       showModal: false,
+      navSettings: data.settings[0].navSettings,
+      sidebarSettings: data.settings[0].sidebarSettings,
+      pageSettings: data.settings[0].pageSettings,
+      modalSettings: data.settings[0].modalSettings,
     };
     this.toggleModal = this.toggleModal.bind(this);
   }
@@ -35,8 +40,7 @@ class StateManager extends Component {
       modal = (
         <Modal
           toggleModal={this.toggleModal}
-          show={this.state.showModal}
-          modalType="document"
+          modalSettings={this.state.modalSettings}
         />
       );
     } else {
@@ -44,13 +48,16 @@ class StateManager extends Component {
     }
     return (
       <div className="wrapper">
+        <p>
+          The App Name is: <b>{this.props.appName}</b>
+        </p>
         <div>
           <button onClick={this.toggleModal}>Show Modal</button>
         </div>
         {modal}
-        <NavBar />
-        <Sidebar />
-        <Page pageName="relationships" />
+        <NavBar navSettings={this.state.navSettings} />
+        <Sidebar sidebarSettings={this.state.sidebarSettings} />
+        <Page pageSettings={this.state.pageSettings} />
       </div>
     );
   }

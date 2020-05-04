@@ -12,9 +12,10 @@ class Page extends Component {
   render() {
     //conditional logic here before rendering
     let page;
-    switch (this.props.pageName) {
+    let { pageName, docFields } = this.props.pageSettings;
+    switch (pageName) {
       case "relationships":
-        page = <Relationships />;
+        page = <Relationships docFields={docFields} />;
         break;
       //TODO: Cases to Follow
       default:

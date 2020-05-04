@@ -1,6 +1,20 @@
 {
   "status": "success",
   "results": 2,
+  "settings": [
+    {
+      "appName": "relationships",
+      "pageSettings": {
+        "pageName": "relationships",
+        "docFields": ["firstName", "lastName", "personalEmail"]
+      },
+      "navSettings": {},
+      "sidebarSettings": {},
+      "modalSettings": {
+        "modalType": "document"
+      }
+    }
+  ],
   "actionItems": [
     {
       "_id": "5e9dcfa2e975d41a6793c96a",

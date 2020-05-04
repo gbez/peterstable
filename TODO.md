@@ -1,3 +1,3 @@
 # TODO
 
-1. Outline State data flow and callbacks.
+1. API calls with axios

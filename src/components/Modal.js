@@ -46,7 +46,8 @@ class Modal extends Component {
 
   render() {
     let modalChild;
-    switch (this.props.modalType) {
+    const modalType = this.props.modalSettings.modalType;
+    switch (modalType) {
       case "document":
         modalChild = (
           <DocumentModal ref={this.ref} toggleModal={this.props.toggleModal} />
@@ -55,12 +56,7 @@ class Modal extends Component {
       default:
         modalChild = <DocumentModal ref={this.ref} />;
     }
-
-    if (this.props.show) {
-      return ReactDOM.createPortal(modalChild, this.el);
-    } else {
-      return null;
-    }
+    return ReactDOM.createPortal(modalChild, this.el);
   }
 }
 
