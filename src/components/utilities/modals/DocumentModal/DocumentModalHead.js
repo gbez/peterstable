@@ -6,7 +6,7 @@ class DocumentModalHead extends Component {
   }
 
   render() {
-    return <div>DocumentModalHead</div>;
+    return <div>{this.props.children}</div>;
   }
 }
 

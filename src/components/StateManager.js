@@ -4,8 +4,7 @@ import Sidebar from "./sidebar/Sidebar";
 import Page from "./pages/Page";
 import Modal from "./Modal";
 import data from "../data.json";
-import DocumentModal from "./utilities/modals/DocumentModal/DocumentModal";
-import DocumentModalFooter from "./utilities/modals/DocumentModal/DocumentModalFooter";
+import axios from "axios";
 
 /*
   What the State Manager Does
@@ -22,6 +21,8 @@ class StateManager extends Component {
     super(props);
     this.state = {
       showModal: false,
+      modalIsCreating: true,
+      modalDocument: null,
       navSettings: data.settings[0].navSettings,
       sidebarSettings: data.settings[0].sidebarSettings,
       pageSettings: data.settings[0].pageSettings,
@@ -30,8 +31,14 @@ class StateManager extends Component {
     this.toggleModal = this.toggleModal.bind(this);
   }
 
-  toggleModal() {
+  toggleModal(doc) {
+    //Toggle if Modal is Shown
     this.setState({ showModal: !this.state.showModal });
+    //Toggle Update or Create on Modal
+    //Callback function where children can pass parent doc to be updated
+    if (doc) {
+      this.setState({ modalIsCreating: false, modalDocument: doc });
+    }
   }
 
   render() {
@@ -41,6 +48,7 @@ class StateManager extends Component {
         <Modal
           toggleModal={this.toggleModal}
           modalSettings={this.state.modalSettings}
+          document={this.state.modalDocument}
         />
       );
     } else {
@@ -52,12 +60,15 @@ class StateManager extends Component {
           The App Name is: <b>{this.props.appName}</b>
         </p>
         <div>
-          <button onClick={this.toggleModal}>Show Modal</button>
+          <button onClick={this.toggleModal}>Log In</button>
         </div>
         {modal}
         <NavBar navSettings={this.state.navSettings} />
         <Sidebar sidebarSettings={this.state.sidebarSettings} />
-        <Page pageSettings={this.state.pageSettings} />
+        <Page
+          pageSettings={this.state.pageSettings}
+          toggleModal={this.toggleModal}
+        />
       </div>
     );
   }

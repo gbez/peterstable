@@ -11,7 +11,9 @@ class DocumentModal extends Component {
   render() {
     return (
       <div className="documentModal">
-        <DocumentModalHead />
+        <DocumentModalHead>
+          <div>{this.props.document.firstName}</div>
+        </DocumentModalHead>
         <DocumentModalBody />
         <DocumentModalFooter toggleModal={this.props.toggleModal} />
       </div>

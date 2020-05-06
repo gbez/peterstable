@@ -20,6 +20,7 @@ class DocumentTable extends Component {
                 key={docItem._id}
                 docItem={docItem}
                 docFields={this.props.docFields}
+                toggleModal={this.props.toggleModal}
               />
             ))}
           </tbody>

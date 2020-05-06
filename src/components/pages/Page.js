@@ -15,7 +15,12 @@ class Page extends Component {
     let { pageName, docFields } = this.props.pageSettings;
     switch (pageName) {
       case "relationships":
-        page = <Relationships docFields={docFields} />;
+        page = (
+          <Relationships
+            docFields={docFields}
+            toggleModal={this.props.toggleModal}
+          />
+        );
         break;
       //TODO: Cases to Follow
       default:

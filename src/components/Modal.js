@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import DocumentModal from "./utilities/modals/DocumentModal/DocumentModal";
+import AuthModal from "./utilities/modals/AuthModal/AuthModal";
 
 class Modal extends Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class Modal extends Component {
   handleKeyUp(e) {
     //If the escape key is pressed
     const { toggleModal } = this.props;
-    if (e.keyCode == 27) {
+    if (e.keyCode === 27) {
       console.log("ESC PRESSED");
       e.preventDefault();
       toggleModal();
@@ -50,7 +51,16 @@ class Modal extends Component {
     switch (modalType) {
       case "document":
         modalChild = (
-          <DocumentModal ref={this.ref} toggleModal={this.props.toggleModal} />
+          <DocumentModal
+            ref={this.ref}
+            toggleModal={this.props.toggleModal}
+            document={this.props.document}
+          />
+        );
+        break;
+      case "auth":
+        modalChild = (
+          <AuthModal ref={this.ref} toggleModal={this.props.toggleModal} />
         );
         break;
       default:
