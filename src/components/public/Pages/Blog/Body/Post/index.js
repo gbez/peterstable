@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { loadPosts } from "../../../../../../actions";
+import { resetSelectedObject } from "~/actions";
 import Header from "./Header";
 import Content from "./Content";
 import ProgressBar from "./ProgressBar";
 
 class Post extends Component {
-  componentDidMount() {
-    this.props.loadPosts();
+  componentWillUnmount() {
+    this.props.resetObject();
   }
 
   render() {
@@ -18,9 +18,14 @@ class Post extends Component {
         <Header />
         <ProgressBar />
         <Content />
+        {/* Do Something with this.props.object */}
       </div>
     );
   }
 }
 
-export default connect(mapStateToProps, { loadPosts })(Post);
+const mapStateToProps = (state) => ({
+  selectedObject: state.selectedObject,
+});
+
+export default connect(mapStateToProps, { resetSelectedObject })(Post);
