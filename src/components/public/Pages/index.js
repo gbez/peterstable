@@ -10,8 +10,4 @@ class Page extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return { page: state.page };
-};
-
 export default Page;

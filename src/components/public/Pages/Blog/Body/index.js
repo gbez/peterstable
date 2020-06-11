@@ -1,20 +1,14 @@
 import React, { Component } from "react";
-import Header from "./Header";
-import Content from "./Content";
-import ProgressBar from "./ProgressBar";
+import Post from "./Post";
+import Feed from "./Feed";
 
 class BlogBody extends Component {
   render() {
-    //Render Header of Blog
-    //Render Progress Bar
-    //Render Content
-    return (
-      <div className="body">
-        <Header />
-        <ProgressBar />
-        <Content />
-      </div>
-    );
+    //Render either a feed or an individual post
+    let body;
+    body = <Post />;
+    //Switch case for body or feed from URL or props?
+    return <div className="blog-body">{body}</div>;
   }
 }
 
