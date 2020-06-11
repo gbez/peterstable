@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { resetSelectedObject } from "~/actions";
+import { resetSelectedObject } from "../../../../../../actions";
 import Header from "./Header";
 import Content from "./Content";
 import ProgressBar from "./ProgressBar";
