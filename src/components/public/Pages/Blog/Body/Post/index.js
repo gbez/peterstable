@@ -6,10 +6,6 @@ import Content from "./Content";
 import ProgressBar from "./ProgressBar";
 
 class Post extends Component {
-  componentWillUnmount() {
-    this.props.resetObject();
-  }
-
   render() {
     //Render an individual post
     ///Header, ProgressBar, Content
@@ -18,7 +14,7 @@ class Post extends Component {
         <Header />
         <ProgressBar />
         <Content />
-        {/* Do Something with this.props.object */}
+        <p>I'm a post with title: {this.props.selectedObject.title}</p>
       </div>
     );
   }

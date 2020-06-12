@@ -18,7 +18,6 @@ export const resetFeed = () => {
 export const loadFeed = () => async (dispatch) => {
   //let url = `/blogposts`;
   const response = await DimSumCart.get("/blogposts/");
-  console.log(response);
   dispatch({ type: LOAD_FEED, payload: response });
 };
 

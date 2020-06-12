@@ -18,13 +18,22 @@ class Feed extends Component {
 
   render() {
     //Render Feed
+    function getSafe(fn, defaultVal) {
+      try {
+        return fn();
+      } catch (e) {
+        return defaultVal;
+      }
+    }
+    let data = getSafe(() => this.props.feed.data.data, []);
     //Map List of posts to post items
     //Maybe display some type of thing at the top of the page.
     //Like what category we are currently in or something like that.
     return (
       <div className="feed">
-        {/* We want to to call this.props.feed and map it onto Feed Items */}
-        <FeedItem />
+        {data.map((obj) => (
+          <FeedItem key={obj._id} item={obj} />
+        ))}
       </div>
     );
   }
