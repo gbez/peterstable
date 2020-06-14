@@ -1,7 +1,7 @@
 import React from "react";
 
 const UnsubscribePage = (props) => {
-  return <h1>UnsubscribePage</h1>;
+  return null;
 };
 
 export default UnsubscribePage;

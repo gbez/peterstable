@@ -6,8 +6,16 @@ const Footer = (props) => {
   return (
     <div className="footer">
       <p>Footer</p>
-      <FooterItem />
-      <FooterLinks />
+      <ul>
+        <li>
+          <FooterItem />
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <FooterLinks />
+        </li>
+      </ul>
     </div>
   );
 };

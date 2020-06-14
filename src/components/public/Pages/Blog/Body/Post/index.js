@@ -7,14 +7,21 @@ import ProgressBar from "./ProgressBar";
 
 class Post extends Component {
   render() {
+    let post = this.props.selectedObject;
     //Render an individual post
     ///Header, ProgressBar, Content
     return (
       <div className="post">
-        <Header />
+        <Header
+          title={post.title}
+          subtitle={post.subtitle}
+          author={post.author}
+        />
         <ProgressBar />
-        <Content />
-        <p>I'm a post with title: {this.props.selectedObject.title}</p>
+        <Content content={post.content} />
+        <button onClick={() => this.props.resetSelectedObject()}>
+          Back to Feed
+        </button>
       </div>
     );
   }

@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 
 class Content extends Component {
+  componentDidMount() {
+    document.getElementById("content").innerHTML = `${this.props.content}`;
+  }
   render() {
-    return (
-      <div className="content">
-        <p>Content</p>
-      </div>
-    );
+    return <div id="content" className="content"></div>;
   }
 }
 

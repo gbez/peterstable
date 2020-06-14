@@ -3,7 +3,7 @@ import React, { Component } from "react";
 const NavBarDropdownItem = (props) => {
   return (
     <div className="navbar-dropdown-item">
-      <a>NavBarDropdownItem</a>
+      <a href={props.url}>{props.text}</a>
     </div>
   );
   {

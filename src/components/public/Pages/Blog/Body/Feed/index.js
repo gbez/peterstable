@@ -5,19 +5,10 @@ import { setSelectedObject, loadFeed } from "../../../../../../actions";
 
 class Feed extends Component {
   componentDidMount() {
-    {
-      /*    
-  When Component is mounted, we want to call our Redux Store
-  to fetch all the posts from the backend.
-
-  We should pass in options for category, tag, sort by, and otherwise.
-*/
-    }
-    this.props.loadFeed();
+    this.props.loadFeed("blogposts");
   }
 
   render() {
-    //Render Feed
     function getSafe(fn, defaultVal) {
       try {
         return fn();
@@ -26,9 +17,7 @@ class Feed extends Component {
       }
     }
     let data = getSafe(() => this.props.feed.data.data, []);
-    //Map List of posts to post items
-    //Maybe display some type of thing at the top of the page.
-    //Like what category we are currently in or something like that.
+
     return (
       <div className="feed">
         {data.map((obj) => (

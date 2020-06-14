@@ -1,11 +1,7 @@
 import React from "react";
 
 const ProgressBar = (props) => {
-  return (
-    <div className="progress-bar">
-      <h1>Progress Bar</h1>
-    </div>
-  );
+  return <div className="progress-bar"></div>;
 };
 
 export default ProgressBar;

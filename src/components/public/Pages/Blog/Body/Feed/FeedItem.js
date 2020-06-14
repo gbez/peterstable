@@ -4,16 +4,22 @@ import { setSelectedObject } from "../../../../../../actions";
 
 class FeedItem extends Component {
   render() {
+    let item = this.props.item;
     return (
       <div className="feed-item">
-        <h1>{this.props.item.title}</h1>
+        <h2>{item.title}</h2>
+        <h3>{item.subtitle}</h3>
         <img
           width="100px"
           src="https://images.unsplash.com/photo-1538370965046-79c0d6907d47?ixlib=rb-1.2.1&w=1000&q=80"
         ></img>
-        <h5>Description</h5>
-        <button onClick={() => this.props.setSelectedObject(this.props.item)}>
-          Select Me
+        <span>
+          <p>
+            {item.author} | {item.publish_date}
+          </p>
+        </span>
+        <button onClick={() => this.props.setSelectedObject(item)}>
+          Select Post
         </button>
       </div>
     );

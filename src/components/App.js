@@ -17,7 +17,7 @@ class App extends Component {
             <StateManager appName="journal" />
           </Route>
           <Route path="/blog">
-            <StateManager appName="blog" />
+            <Public />
           </Route>
           <Route path="/kitchen">
             <StateManager appName="kitchen" />

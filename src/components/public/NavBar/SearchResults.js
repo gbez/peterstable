@@ -7,7 +7,6 @@ class SearchResults extends Component {
         {/* Comment 
             1. Display Search Results in stylized box with greater z-index
           */}
-        <h1>Search Results</h1>
       </div>
     );
   }
