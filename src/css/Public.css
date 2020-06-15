@@ -1,0 +1,95 @@
+@media screen and (min-width: 480px) {
+  .public {
+    /*
+        Public will be a grid. Nav and Footer will be fixed.
+        Page will be a responsive flex box.
+        //Nav bar will pop based on media size.
+    */
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+  }
+
+  .navbar {
+    background: #0000ff;
+    flex: 3;
+    order: 1;
+  }
+
+  .navbar-item {
+    background: #14bee3;
+  }
+
+  .navbar-dropdown-item-wrapper {
+    background: #14d6dd;
+  }
+
+  .navbar-dropdown-item {
+    background: #14e3b6;
+  }
+
+  .navbar-searchbar {
+    background: #14e37b;
+  }
+
+  .search-results {
+    background: #14e348;
+  }
+
+  .page {
+    background: #dd1425;
+    flex: 3;
+    order: 2;
+  }
+
+  .blog {
+  }
+
+  .blog-body {
+  }
+
+  .feed {
+  }
+
+  .feed-item {
+  }
+
+  .feed-item img {
+  }
+
+  .feed-item h1 {
+  }
+
+  .feed-item button {
+  }
+
+  .post {
+  }
+
+  .header {
+  }
+
+  .header-item {
+  }
+
+  .content {
+  }
+
+  .progress-bar {
+  }
+
+  .footer {
+    background: #ddbf14;
+    flex: 3;
+    order: 3;
+  }
+
+  .footer-item {
+  }
+
+  .unsubscribe-page {
+  }
+
+  .subscribe-popup {
+  }
+}

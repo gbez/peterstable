@@ -16,7 +16,7 @@ export const resetFeed = () => {
 };
 
 export const loadFeed = (endpoint, query) => async (dispatch) => {
-  let url = `/${endpoint}?${query}`;
+  //let url = `/${endpoint}?${query}`;
   const response = await DimSumCart.get("/blogposts/");
   dispatch({ type: LOAD_FEED, payload: response });
 };

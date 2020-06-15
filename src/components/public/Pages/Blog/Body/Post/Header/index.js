@@ -10,7 +10,7 @@ const Header = (props) => {
       <HeaderItem>
         <h3>{props.subtitle}</h3>
         <span>
-          <p>{props.author}</p>
+          <p>{props.author.firstName}</p>
         </span>
       </HeaderItem>
     </div>

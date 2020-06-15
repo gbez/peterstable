@@ -4,6 +4,8 @@ import StateManager from "./StateManager";
 import Public from "./public";
 import PageNotFound from "./pages/errors/PageNotFound";
 import "../css/App.css";
+import "../css/Public.css";
+import "../css/Private.css";
 
 class App extends Component {
   render() {

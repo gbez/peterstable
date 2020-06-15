@@ -17,7 +17,6 @@ class Feed extends Component {
       }
     }
     let data = getSafe(() => this.props.feed.data.data, []);
-
     return (
       <div className="feed">
         {data.map((obj) => (

@@ -14,9 +14,7 @@ class FeedItem extends Component {
           src="https://images.unsplash.com/photo-1538370965046-79c0d6907d47?ixlib=rb-1.2.1&w=1000&q=80"
         ></img>
         <span>
-          <p>
-            {item.author} | {item.publish_date}
-          </p>
+          <p>{item.publish_date}</p>
         </span>
         <button onClick={() => this.props.setSelectedObject(item)}>
           Select Post
@@ -27,7 +25,7 @@ class FeedItem extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { feed: state.feed };
+  return { selectedObject: state.selectedObject };
 };
 
 export default connect(mapStateToProps, { setSelectedObject })(FeedItem);
