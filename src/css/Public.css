@@ -1,95 +1,179 @@
-@media screen and (min-width: 480px) {
-  .public {
-    /*
-        Public will be a grid. Nav and Footer will be fixed.
-        Page will be a responsive flex box.
-        //Nav bar will pop based on media size.
-    */
-    display: flex;
-    flex-direction: column;
-    flex-basis: 100%;
+:root {
+  --one: #ffa69e;
+  --two: #faf3dd;
+  --three: #b8f2e6;
+  --four: #aed9e0;
+  --five: #5e6472;
+  --mobile: 640px;
+}
+
+.public {
+  /*
+    Public will be a grid.
+    Nav and Footer will be fixed.
+    Page will be a responsive flex box.
+    Nav bar will pop based on media size.
+  */
+}
+
+/* ------------NAVBAR CSS-------------- */
+
+.navbar {
+  background-color: var(--one);
+  overflow: hidden;
+  flex: 3;
+  order: 1;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.navbar-item a {
+  display: block;
+  float: left;
+  overflow: hidden;
+  color: white;
+  text-align: center;
+  padding: 5px 16px;
+  margin: 10px 0px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.navbar-item .icon {
+  display: none;
+}
+
+.navbar-item a:hover {
+  background-color: var(--four);
+}
+
+.navbar-item:hover .navbar-dropdown-item-wrapper {
+  display: block;
+}
+
+.navbar-dropdown-item-wrapper {
+  display: none;
+  position: absolute;
+  top: 50px;
+  left: 20px;
+  width: 300px;
+  background-color: var(--one);
+  z-index: 1;
+}
+
+.navbar-dropdown-item a {
+  background-color: var(--three);
+  float: none;
+  padding: 10px;
+  margin: 10px 0px;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+
+.navbar-searchbar {
+  background: #14e37b;
+}
+
+.search-results {
+  background: #14e348;
+}
+
+/* ----------MOBILE NAVBAR------------- */
+@media screen and (max-width: 600px) {
+  .navbar-item .icon {
+    float: right;
+    display: block;
+    padding: 10px;
+    margin-right: 10px;
   }
 
-  .navbar {
-    background: #0000ff;
-    flex: 3;
-    order: 1;
+  .navbar-item a {
+    display: none;
   }
 
-  .navbar-item {
-    background: #14bee3;
+  .navbar.responsive {
+    position: relative;
   }
 
-  .navbar-dropdown-item-wrapper {
-    background: #14d6dd;
+  .navbar.responsive .navbar-item a {
+    float: none;
+    display: block;
+    text-align: center;
   }
 
-  .navbar-dropdown-item {
-    background: #14e3b6;
+  .navbar.responsive .icon {
+    position: absolute;
+    top: 0;
+    right: 0;
   }
+}
 
-  .navbar-searchbar {
-    background: #14e37b;
-  }
+/* --------------PAGE CSS------------- */
 
-  .search-results {
-    background: #14e348;
-  }
+.page {
+  background: var(--four);
+  flex: 3;
+  order: 2;
+}
 
-  .page {
-    background: #dd1425;
-    flex: 3;
-    order: 2;
-  }
+/* -----------BLOG CSS ------------- */
 
-  .blog {
-  }
+.blog {
+}
 
-  .blog-body {
-  }
+.blog-body {
+}
 
-  .feed {
-  }
+.feed {
+}
 
-  .feed-item {
-  }
+.feed-item {
+}
 
-  .feed-item img {
-  }
+.feed-item img {
+}
 
-  .feed-item h1 {
-  }
+.feed-item h1 {
+}
 
-  .feed-item button {
-  }
+.feed-item button {
+}
 
-  .post {
-  }
+.post {
+}
 
-  .header {
-  }
+.header {
+}
 
-  .header-item {
-  }
+.header-item {
+}
 
-  .content {
-  }
+.content {
+}
 
-  .progress-bar {
-  }
+.progress-bar {
+}
 
-  .footer {
-    background: #ddbf14;
-    flex: 3;
-    order: 3;
-  }
+/* -----------FOOTER CSS------------ */
 
-  .footer-item {
-  }
+.footer {
+  background: var(--five);
+  flex: 3;
+  order: 3;
+}
 
-  .unsubscribe-page {
-  }
+.footer-item {
+}
 
-  .subscribe-popup {
-  }
+/* ----------SUBSCRIPTION CSS---------- */
+
+.unsubscribe-page {
+}
+
+.subscribe-popup {
 }
