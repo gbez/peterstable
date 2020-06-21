@@ -6,6 +6,10 @@ import {
   RESET_PAGE,
   SET_SELECTED_OBJECT,
   RESET_SELECTED_OBJECT,
+  SET_QUERY,
+  RESET_QUERY,
+  LOGIN,
+  LOGOUT,
 } from "../actions/actionTypes";
 
 const feedReducer = (feed = [], action) => {
@@ -35,8 +39,28 @@ const pageReducer = (page = null, action) => {
   return page;
 };
 
+const queryReducer = (query = null, action) => {
+  if (action.type === SET_QUERY) {
+    return action.payload;
+  } else if (action.type === RESET_QUERY) {
+    return null;
+  }
+  return query;
+};
+
+const authReducer = (user = null, action) => {
+  if (action.type === LOGIN) {
+    return action.payload;
+  } else if (action.type === LOGOUT) {
+    return null;
+  }
+  return user;
+};
+
 export default combineReducers({
   feed: feedReducer,
   selectedObject: selectedObjectReducer,
   page: pageReducer,
+  query: queryReducer,
+  user: authReducer,
 });

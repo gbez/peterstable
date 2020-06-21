@@ -5,7 +5,7 @@ import { setSelectedObject, loadFeed } from "../../../../../../actions";
 
 class Feed extends Component {
   componentDidMount() {
-    this.props.loadFeed("blogposts");
+    this.props.loadFeed();
   }
 
   render() {

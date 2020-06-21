@@ -7,9 +7,9 @@ class Public extends Component {
   render() {
     return (
       <div className="public">
-        <NavBar />
+        {this.props.nav && <NavBar />}
         <Page />
-        <Footer />
+        {this.props.footer && <Footer />}
       </div>
     );
   }

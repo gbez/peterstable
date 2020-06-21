@@ -1,77 +1,70 @@
-import React, { Component } from "react";
-import NavBar from "./nav/NavBar";
-import Sidebar from "./sidebar/Sidebar";
-import Page from "./pages/Page";
-import Modal from "./Modal";
-import data from "../data.json";
-import axios from "axios";
-
+import React, { Fragment, Component } from "react";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
+import Public from "../components/public";
+import Private from "../components/private";
+import Login from "../components/auth/login";
+import { setPage, setQuery } from "../actions";
 /*
   What the State Manager Does
-    1. Keeps track of which application is running.
-      a. runs state.application through a swithc case and sets options
-      b. passes options to NavBar, SideBar, and Page.
-    2. Keeps track of screen size and passes options to NavBar, SideBar, and Page
-    3. Houses the Modal that any child can later call.
-    4.   
+    1. Checks if a user is loggin in for Protected Pages
+    2. Sets the page in the redux store with the appropriate props
   */
 
 class StateManager extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showModal: false,
-      modalIsCreating: true,
-      modalDocument: null,
-      navSettings: data.settings[0].navSettings,
-      sidebarSettings: data.settings[0].sidebarSettings,
-      pageSettings: data.settings[0].pageSettings,
-      modalSettings: data.settings[0].modalSettings,
-    };
-    this.toggleModal = this.toggleModal.bind(this);
-  }
-
-  toggleModal(doc) {
-    //Toggle if Modal is Shown
-    this.setState({ showModal: !this.state.showModal });
-    //Toggle Update or Create on Modal
-    //Callback function where children can pass parent doc to be updated
-    if (doc) {
-      this.setState({ modalIsCreating: false, modalDocument: doc });
-    }
-  }
-
   render() {
-    let modal;
-    if (this.state.showModal) {
-      modal = (
-        <Modal
-          toggleModal={this.toggleModal}
-          modalSettings={this.state.modalSettings}
-          document={this.state.modalDocument}
-        />
-      );
-    } else {
-      modal = null;
+    let toReturn;
+    let page;
+    let query;
+    var renderProps = {
+      //Default Render Props;
+      nav: true,
+      footer: true,
+    };
+    //1. Authorization
+    //1a) If this.props.public and the user isn't logged in:
+    //1b) Redirect to Login
+
+    //2. Page switch
+    //2a) Switch (this.props.page)
+    //2b) Set return to public or private
+    //2c) Specify render options in props
+    //2d) Set query params in Store
+    //2e) Set page in Store
+
+    //3. Return return obj.
+
+    //1 - Page Options
+    switch (window.location.pathname) {
+      case "/blog":
+        page = "blog";
+        query = "/blogposts";
+        break;
+      case "/login":
+        page = "login";
+      default:
+        break;
     }
-    return (
-      <div className="wrapper">
-        <p>
-          The App Name is: <b>{this.props.appName}</b>
-        </p>
-        <div>
-          <button onClick={this.toggleModal}>Log In</button>
-        </div>
-        {modal}
-        <NavBar navSettings={this.state.navSettings} />
-        <Sidebar sidebarSettings={this.state.sidebarSettings} />
-        <Page
-          pageSettings={this.state.pageSettings}
-          toggleModal={this.toggleModal}
-        />
-      </div>
-    );
+
+    //2 - Redux
+    this.props.setPage(page);
+    //this.props.setQuery(query);
+
+    //3 - Auth
+    if (this.props.public == "false" && this.props.user != null) {
+      toReturn = <Private {...renderProps} />;
+    } else if (this.props.public == "false" && !this.props.user) {
+      toReturn = <Login />;
+    } else {
+      toReturn = <Public {...renderProps} />;
+    }
+
+    return <Fragment>{toReturn}</Fragment>;
   }
 }
 
-export default StateManager;
+const mapStateToProps = (state) => {
+  return { user: state.user };
+};
+
+export default connect(mapStateToProps, { setPage, setQuery })(StateManager);

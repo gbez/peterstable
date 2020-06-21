@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import StateManager from "./StateManager";
-import Public from "./public";
 import PageNotFound from "./pages/errors/PageNotFound";
 import "../css/App.css";
 import "../css/Public.css";
@@ -13,27 +12,25 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-          <Route path="/relationships">
-            <StateManager appName="relationships" />
-          </Route>
-          <Route path="/journal">
-            <StateManager appName="journal" />
-          </Route>
+          {/* Blog
+              1. Public is true
+              2. Page is Blog
+              3. No specification in blog filter
+          */}
           <Route path="/blog">
-            <Public />
+            <StateManager public="false" />
           </Route>
-          <Route path="/kitchen">
-            <StateManager appName="kitchen" />
+          {/* Login Page
+              1. Open to public
+              2. It's the login page
+              3. Nav and Footer are automatically on, but we can override
+                 and turn them off from the router...so whenever we specify a new page,
+                 we have options from the router that configure the page automatically.
+          */}
+          <Route path="/login">
+            <StateManager public="true" />
           </Route>
-          <Route path="/users">
-            <StateManager appName="users" />
-          </Route>
-          <Route path="/calendar">
-            <StateManager appName="calendar" />
-          </Route>
-          <Route path="/public">
-            <Public />
-          </Route>
+          {/* If we miss all routes, page that specifies page not found*/}
           <Route exact path="*">
             <PageNotFound />
           </Route>
