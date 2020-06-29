@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { setSelectedObject } from "../../../../../../actions";
+import { setSelectedObject } from "../../../../../actions";
 
 class FeedItem extends Component {
   render() {

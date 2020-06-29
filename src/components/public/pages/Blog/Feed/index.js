@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import FeedItem from "./FeedItem";
-import { setSelectedObject, loadFeed } from "../../../../../../actions";
+import { setSelectedObject, loadFeed } from "../../../../../actions";
 
 class Feed extends Component {
   componentDidMount() {

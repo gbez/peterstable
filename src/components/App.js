@@ -1,7 +1,16 @@
+//React
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import StateManager from "./StateManager";
-import PageNotFound from "./pages/errors/PageNotFound";
+//Route Middleware
+import PublicRoute from "./routing/PublicRoute";
+import ProtectedRoute from "./routing/ProtectedRoute";
+import RouteHandler from "./RouteHandler";
+import PageNotFound from "./utilities/errors/PageNotFound";
+//Components
+import Private from "./private";
+import Login from "./auth/login";
+import Blog from "./public/pages/Blog";
+//CSS
 import "../css/App.css";
 import "../css/Public.css";
 import "../css/Private.css";
@@ -12,25 +21,58 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-          {/* Blog
-              1. Public is true
-              2. Page is Blog
-              3. No specification in blog filter
-          */}
-          <Route path="/blog">
-            <StateManager public="false" />
+          {/*---------------------Blog Routes---------------------*/}
+
+          <PublicRoute path="/blog" component={Blog} />
+
+          <Route path="/musings">
+            <RouteHandler />
           </Route>
-          {/* Login Page
-              1. Open to public
-              2. It's the login page
-              3. Nav and Footer are automatically on, but we can override
-                 and turn them off from the router...so whenever we specify a new page,
-                 we have options from the router that configure the page automatically.
-          */}
-          <Route path="/login">
-            <StateManager public="true" />
+
+          <Route path="/poetry">
+            <RouteHandler />
           </Route>
-          {/* If we miss all routes, page that specifies page not found*/}
+
+          <Route path="/journal">
+            <RouteHandler />
+          </Route>
+
+          {/*---------------------Library Routes---------------------*/}
+
+          <Route path="/library">
+            <RouteHandler />
+          </Route>
+
+          {/*---------------------Repository Routes---------------------*/}
+
+          <Route path="/repository">
+            <RouteHandler />
+          </Route>
+
+          {/*---------------------Jots Routes---------------------*/}
+
+          <Route path="/jot">
+            <RouteHandler />
+          </Route>
+
+          {/*---Auth Routes---*/}
+
+          <Route path="/login" component={Login} />
+
+          <Route path="/me">
+            <RouteHandler />
+          </Route>
+
+          <Route path="/forgotPassword">
+            <RouteHandler />
+          </Route>
+
+          <Route path="/resetPassword">
+            <RouteHandler />
+          </Route>
+
+          {/*---Error Routes---*/}
+
           <Route exact path="*">
             <PageNotFound />
           </Route>

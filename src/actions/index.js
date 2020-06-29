@@ -19,7 +19,8 @@ export const resetFeed = () => {
   };
 };
 
-export const loadFeed = (query) => async (dispatch, getState) => {
+export const loadFeed = () => async (dispatch, getState) => {
+  console.log(getState().query);
   const response = await DimSumCart.get(getState().query);
   dispatch({ type: LOAD_FEED, payload: response });
 };
@@ -57,7 +58,10 @@ export const setQuery = (query) => {
 // Auth
 export const login = (loginObject) => async (dispatch) => {
   const response = await DimSumCart.post("/users/login", loginObject)
-    .then((response) => dispatch({ type: LOGIN, payload: response.data }))
+    .then((response) => {
+      dispatch({ type: LOGIN, payload: response.data });
+      localStorage.setItem("token", response.data.token);
+    })
     .catch((e) => {
       alert(e.response.data.message);
     });

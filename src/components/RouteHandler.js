@@ -1,9 +1,8 @@
 import React, { Fragment, Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-import Public from "../components/public";
-import Private from "../components/private";
-import Login from "../components/auth/login";
+import Private from "./private";
+import Login from "./auth/login";
 import { setPage, setQuery } from "../actions";
 /*
   What the State Manager Does
@@ -11,7 +10,7 @@ import { setPage, setQuery } from "../actions";
     2. Sets the page in the redux store with the appropriate props
   */
 
-class StateManager extends Component {
+class RouteHandler extends Component {
   render() {
     let toReturn;
     let page;
@@ -36,7 +35,7 @@ class StateManager extends Component {
 
     //1 - Page Options
     switch (window.location.pathname) {
-      case "/blog":
+      case "/journal":
         page = "blog";
         query = "/blogposts";
         break;
@@ -48,7 +47,7 @@ class StateManager extends Component {
 
     //2 - Redux
     this.props.setPage(page);
-    //this.props.setQuery(query);
+    this.props.setQuery(query);
 
     //3 - Auth
     if (this.props.public == "false" && this.props.user != null) {
@@ -56,7 +55,7 @@ class StateManager extends Component {
     } else if (this.props.public == "false" && !this.props.user) {
       toReturn = <Login />;
     } else {
-      toReturn = <Public {...renderProps} />;
+      toReturn = <Private {...renderProps} />;
     }
 
     return <Fragment>{toReturn}</Fragment>;
@@ -67,4 +66,4 @@ const mapStateToProps = (state) => {
   return { user: state.user };
 };
 
-export default connect(mapStateToProps, { setPage, setQuery })(StateManager);
+export default connect(mapStateToProps, { setPage, setQuery })(RouteHandler);
