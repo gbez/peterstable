@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import DocumentModal from "./utilities/modals/DocumentModal/DocumentModal";
-import AuthModal from "./utilities/modals/AuthModal/AuthModal";
+import DocumentModal from "./DocumentModal/DocumentModal";
+import AuthModal from "./AuthModal/AuthModal";
 
 class Modal extends Component {
   constructor(props) {

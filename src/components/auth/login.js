@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import { login } from "../../actions";
 
 class Login extends Component {
@@ -30,6 +31,12 @@ class Login extends Component {
   }
 
   render() {
+    var location = this.props.location.state
+      ? this.props.location.state.from
+      : "/";
+    if (localStorage.getItem("token") != null) {
+      return <Redirect to={{ pathname: location }} />;
+    }
     return (
       <form onSubmit={this.onFormSubmit}>
         <label>
@@ -56,4 +63,8 @@ class Login extends Component {
   }
 }
 
-export default connect(null, { login })(Login);
+const mapStateToProps = (state) => {
+  return { user: state.user };
+};
+
+export default connect(mapStateToProps, { login })(Login);

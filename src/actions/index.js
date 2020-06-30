@@ -12,6 +12,7 @@ import {
 } from "./actionTypes";
 
 import DimSumCart from "../apis/DimSumCartAPI";
+import { toast } from "react-toastify";
 // Feed
 export const resetFeed = () => {
   return {
@@ -59,11 +60,12 @@ export const setQuery = (query) => {
 export const login = (loginObject) => async (dispatch) => {
   const response = await DimSumCart.post("/users/login", loginObject)
     .then((response) => {
-      dispatch({ type: LOGIN, payload: response.data });
       localStorage.setItem("token", response.data.token);
+      dispatch({ type: LOGIN, payload: response.data });
+      toast.success("Log In Success");
     })
     .catch((e) => {
-      alert(e.response.data.message);
+      toast.error(e.response.data.message);
     });
 };
 
