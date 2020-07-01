@@ -11,8 +11,10 @@ import { ToastContainer } from "react-toastify";
 import Login from "./auth/login";
 import ForgotPassword from "./auth/forgotPassword";
 //Components
-import Feed from "./public/Feed";
-import Post from "./public/Post";
+import Journal from "./public/pages/Journal";
+import Library from "./public/pages/Library";
+import Repository from "./public/pages/Repository";
+import Auditorium from "./public/pages/Auditorium";
 import Dashboard from "./private";
 //CSS
 import "../css/App.css";
@@ -28,148 +30,106 @@ class App extends Component {
       <Fragment>
         <ToastContainer
           position="top-center"
-          autoClose={5000}
-          hideProgressBar={false}
+          autoClose={3000}
+          hideProgressBar={true}
           newestOnTop={false}
           closeOnClick
           rtl={false}
-          pauseOnFocusLoss
           draggable
         />
         <Router>
           <Switch>
             {/*---------------------Blog Routes---------------------*/}
+            <PublicRoute
+              exact
+              path="/journal/:year/:month/:slug"
+              component={Journal}
+              queryOverride="/blogposts/alias/journal"
+            />
 
             <PublicRoute
-              exact
               path="/journal"
-              component={Feed}
-              wrapper="journal"
+              component={Journal}
+              queryOverride="/blogposts/journal"
             />
-            <PublicRoute
-              exact
-              path="/musings"
-              component={Feed}
-              wrapper="jouranl"
-            />
-            <PublicRoute
-              exact
-              path="/poetry"
-              component={Feed}
-              wrapper="journal"
-            />
-            <PublicRoute
-              exact
-              path="/bulletin"
-              component={Feed}
-              wrapper="journal"
-            />
-            <PublicRoute
-              exact
-              path="/published"
-              component={Feed}
-              wrapper="journal"
-            />
-            <PublicRoute exact path="/:year/:month/:slug" component={Post} />
+            <PublicRoute exact path="/musings" component={Journal} />
+            <PublicRoute exact path="/poetry" component={Journal} />
+            <PublicRoute exact path="/bulletin" component={Journal} />
+            <PublicRoute exact path="/published" component={Journal} />
 
             {/*---------------------Library Routes---------------------*/}
 
             <PublicRoute
               exact
               path="/library"
-              component={Feed}
-              wrapper="library"
+              component={Library}
               footerDisable="yep"
             />
 
             <PublicRoute
               exact
               path="/library/queue"
-              component={Feed}
-              wrapper="library"
+              component={Library}
               footerDisable="yep"
             />
 
             <PublicRoute
               exact
               path="/library/:year/:month/:slug"
-              component={Post}
-              wrapper="book"
+              component={Library}
               footerDisable="yep"
             />
 
             {/*---------------------Repository Routes---------------------*/}
 
-            <PublicRoute
-              exact
-              path="/repository"
-              component={Feed}
-              wrapper="repository"
-            />
+            <PublicRoute exact path="/repository" component={Repository} />
 
             <PublicRoute
               exact
               path="/repository/snippets"
-              component={Feed}
-              wrapper="repository"
+              component={Repository}
             />
 
             <PublicRoute
               exact
               path="/repository/snippets/:year/:month/:slug"
-              component={Post}
-              wrapper="repository"
+              component={Repository}
             />
 
-            <PublicRoute
-              exact
-              path="/repository/docs"
-              component={Feed}
-              wrapper="repository"
-            />
+            <PublicRoute exact path="/repository/docs" component={Repository} />
 
             <PublicRoute
               exact
               path="/repository/docs/:year/:month/:slug"
-              component={Post}
-              wrapper="repository"
+              component={Repository}
             />
 
             {/*---------------------Auditorium Routes---------------------*/}
 
-            <PublicRoute
-              exact
-              path="/auditorium"
-              component={Feed}
-              wrapper="auditorium"
-            />
+            <PublicRoute exact path="/auditorium" component={Auditorium} />
 
             <PublicRoute
               exact
               path="/auditorium/theory"
-              component={Feed}
-              wrapper="auditorium"
+              component={Auditorium}
             />
 
             <PublicRoute
               exact
               path="/auditorium/theory/:year/:month/:slug"
-              component={Post}
-              wrapper="auditorium"
+              component={Auditorium}
             />
 
             <PublicRoute
               exact
               path="/auditorium/playlists"
-              component={Feed}
-              wrapper="auditorium"
+              component={Auditorium}
             />
 
             <PublicRoute
               exact
               path="/auditorium/playlists/:year/:month/:slug"
-              component={Post}
-              wrapper="auditorium"
+              component={Auditorium}
             />
 
             {/*---------------------Auth Routes---------------------*/}

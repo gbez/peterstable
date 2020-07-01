@@ -21,7 +21,6 @@ export const resetFeed = () => {
 };
 
 export const loadFeed = () => async (dispatch, getState) => {
-  console.log(getState().query);
   const response = await DimSumCart.get(getState().query);
   dispatch({ type: LOAD_FEED, payload: response });
 };
@@ -69,7 +68,7 @@ export const login = (loginObject) => async (dispatch) => {
     });
 };
 
-export const logloginout = () => {
+export const logout = () => {
   return {
     type: LOGOUT,
   };

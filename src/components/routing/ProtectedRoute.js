@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { isExpired } from "../utilities/auth";
-import { toast } from "react-toastify";
 import { Fragment } from "react";
 
 class ProtectedRoute extends Component {
@@ -9,11 +8,10 @@ class ProtectedRoute extends Component {
     const Component = this.props.component;
     const token = localStorage.getItem("token");
     var isAuthenticated = false;
-    if (token && !isExpired(token)) {
-      isAuthenticated = true;
-    } else {
-      localStorage.removeItem("token");
-      toast.error("JWT Token is Invalid! Log In Again");
+    if (token) {
+      if (!isExpired(token)) {
+        isAuthenticated = true;
+      }
     }
     return isAuthenticated ? (
       <Component />
