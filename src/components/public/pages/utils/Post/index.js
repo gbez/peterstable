@@ -9,18 +9,21 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { loadFeed } from "../../../../../actions";
 import { getSafe } from "../helpers";
+import PostField from "./PostField";
 
 class Post extends Component {
   componentDidMount() {
     this.props.loadFeed();
   }
   render() {
-    let post = getSafe(() => this.props.feed.data.data, []);
+    let post = getSafe(() => this.props.feed.data.data[0], []);
     return (
       <Fragment>
         {this.props.children}
         <div className="post">
-          <h1>{post.subtitle}</h1>
+          {this.props.extract.map((el) => (
+            <PostField key={el} tag={el.tag} field={el.field} post={post} />
+          ))}
         </div>
       </Fragment>
     );

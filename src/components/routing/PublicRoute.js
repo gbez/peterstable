@@ -13,6 +13,10 @@ import Footer from "../public/Footer";
   a. REQUIRED: false
   b. DEFAULT: window pathname
   c. DESCRIPTION: to override query for API call
+3. queryPrepend
+  a. REQUIRED: false
+  b. Default: empty string
+  c. Description: backend prepend route on which pathname is added onto
 3. navbarDisable
   a. REQUIRED: false
   b. DEFAULT: false
@@ -25,9 +29,10 @@ import Footer from "../public/Footer";
 
 class PublicRoute extends Component {
   render() {
+    let prepend = this.props.queryPrepend ? this.props.queryPrepend : "";
     let query = this.props.queryOverride
       ? this.props.queryOverride
-      : window.location.pathname;
+      : prepend + window.location.pathname;
     this.props.setQuery(query);
     const Component = this.props.component;
     return (

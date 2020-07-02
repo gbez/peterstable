@@ -44,18 +44,18 @@ class App extends Component {
               exact
               path="/journal/:year/:month/:slug"
               component={Journal}
-              queryOverride="/blogposts/alias/journal"
+              queryPrepend="/blogposts/alias"
             />
 
             <PublicRoute
               path="/journal"
               component={Journal}
-              queryOverride="/blogposts/journal"
+              queryPrepend="/blogposts/alias"
             />
-            <PublicRoute exact path="/musings" component={Journal} />
-            <PublicRoute exact path="/poetry" component={Journal} />
-            <PublicRoute exact path="/bulletin" component={Journal} />
-            <PublicRoute exact path="/published" component={Journal} />
+            <PublicRoute exact path="/journal/musings" component={Journal} />
+            <PublicRoute exact path="/journal/poetry" component={Journal} />
+            <PublicRoute exact path="/journal/bulletin" component={Journal} />
+            <PublicRoute exact path="/journal/published" component={Journal} />
 
             {/*---------------------Library Routes---------------------*/}
 

@@ -10,10 +10,17 @@ import Post from "./utils/Post";
 class Journal extends Component {
   render() {
     let toRender;
+    let toExtract;
     //If there is more than three / in the path, it is a post
-    if (window.location.pathname.split("/").length - 1 > 2) {
+    if (window.location.pathname.split("/").length - 1 > 4) {
+      //Items to pull out of Post
+      toExtract = [
+        { field: "slug", tag: "h1" },
+        { field: "subtitle", tag: "i" },
+      ];
       toRender = (
-        <Post>
+        <Post extract={toExtract}>
+          {/*Content rendered before dynamic post content */}
           <h1>Post Child</h1>
           <p>Blah Blah Blah</p>
         </Post>

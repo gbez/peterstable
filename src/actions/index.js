@@ -21,8 +21,13 @@ export const resetFeed = () => {
 };
 
 export const loadFeed = () => async (dispatch, getState) => {
-  const response = await DimSumCart.get(getState().query);
-  dispatch({ type: LOAD_FEED, payload: response });
+  const response = await DimSumCart.get(getState().query)
+    .then((response) => {
+      dispatch({ type: LOAD_FEED, payload: response });
+    })
+    .catch((e) => {
+      toast.error(e.response.data.message);
+    });
 };
 
 // Selected Object
