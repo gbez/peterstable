@@ -39,9 +39,9 @@ class NavBar extends Component {
           <NavBarItem text="Library" url="/library" />
           <NavBarItem text="Jots" url="/jots" />
           <NavBarItem text="Repository" url="/repository" />
-          <NavBarItem childClass="icon">
+          <div className="icon">
             <FaBars onClick={this.handleIconClick} />
-          </NavBarItem>
+          </div>
           {/*
           <NavBarSearchBar />
           <SearchResults />*/}
