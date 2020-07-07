@@ -5,6 +5,7 @@ class PostField extends Component {
     const Tag = this.props.tag;
     const post = this.props.post;
     const field = this.props.field;
+    console.log(post[field]);
     return <Tag>{post[field]}</Tag>;
   }
 }

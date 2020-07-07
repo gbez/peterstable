@@ -10,6 +10,7 @@ import { connect } from "react-redux";
 import { loadFeed } from "../../../../../actions";
 import { getSafe } from "../helpers";
 import PostField from "./PostField";
+import Content from "./Content";
 
 class Post extends Component {
   componentDidMount() {
@@ -17,14 +18,32 @@ class Post extends Component {
   }
   render() {
     let post = getSafe(() => this.props.feed.data.data[0], []);
+    let i = 0;
     return (
       <Fragment>
         {this.props.children}
-        <div className="post">
-          {this.props.extract.map((el) => (
-            <PostField key={el} tag={el.tag} field={el.field} post={post} />
-          ))}
-        </div>
+        <div className="subscribe-button"></div>
+        {post.length != 0 && (
+          <div className="post">
+            <div className="progress-bar" />
+            <div className="header">
+              {this.props.extract.map((el) => (
+                <PostField
+                  key={i++}
+                  tag={el.tag}
+                  field={el.field}
+                  post={post}
+                />
+              ))}
+              <p>{post.readableDate}</p>
+              <p>{post.readingTime.text}</p>
+              <p>
+                {post.author.firstName} {post.author.lastName}
+              </p>
+            </div>
+            <Content content={post.content} />
+          </div>
+        )}
       </Fragment>
     );
   }

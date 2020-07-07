@@ -39,7 +39,13 @@ class App extends Component {
         />
         <Router>
           <Switch>
-            {/*---------------------Blog Routes---------------------*/}
+            {/*---------------------Journal Routes---------------------*/}
+            <PublicRoute
+              path="/journal"
+              component={Journal}
+              queryPrepend="/blogposts/alias"
+            />
+
             <PublicRoute
               exact
               path="/journal/:year/:month/:slug"
@@ -68,6 +74,13 @@ class App extends Component {
 
             <PublicRoute
               exact
+              path="/library/:category"
+              component={Library}
+              footerDisable="yep"
+            />
+
+            <PublicRoute
+              exact
               path="/library/queue"
               component={Library}
               footerDisable="yep"
@@ -75,7 +88,7 @@ class App extends Component {
 
             <PublicRoute
               exact
-              path="/library/:year/:month/:slug"
+              path="/library/book/:slug"
               component={Library}
               footerDisable="yep"
             />

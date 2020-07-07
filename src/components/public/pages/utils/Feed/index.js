@@ -25,10 +25,9 @@ class Feed extends Component {
       <Fragment>
         {this.props.children}
         <div className="feed">
-          <h1>Feed</h1>
-          {feed.map((obj) => (
-            <FeedItem key={obj._id} item={obj} />
-          ))}
+          {feed.map((obj) => {
+            return obj.title ? <FeedItem key={obj._id} item={obj} /> : null;
+          })}
         </div>
       </Fragment>
     );
