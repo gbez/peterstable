@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-import { isExpired } from "../utilities/auth";
+import { isExpired } from "../utilities/helpers";
 import { Fragment } from "react";
 
 class ProtectedRoute extends Component {
@@ -14,7 +14,9 @@ class ProtectedRoute extends Component {
       }
     }
     return isAuthenticated ? (
-      <Component />
+      <div className="page">
+        <Component />
+      </div>
     ) : (
       <Redirect
         to={{ pathname: "/login", state: { from: window.location.pathname } }}

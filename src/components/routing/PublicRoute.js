@@ -38,7 +38,9 @@ class PublicRoute extends Component {
     return (
       <Fragment>
         {(this.props.navbarDisable ? false : true) && <NavBar />}
-        <Component />
+        <div className="page">
+          <Component />
+        </div>
         {(this.props.footerDisable ? false : true) && <Footer />}
       </Fragment>
     );

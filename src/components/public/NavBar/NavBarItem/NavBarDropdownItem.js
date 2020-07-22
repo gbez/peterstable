@@ -6,9 +6,6 @@ const NavBarDropdownItem = (props) => {
       <a href={props.url}>{props.text}</a>
     </div>
   );
-  {
-    /* Return Dropdown Item */
-  }
 };
 
 export default NavBarDropdownItem;

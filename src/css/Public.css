@@ -8,71 +8,58 @@
 }
 
 /* ------------NAVBAR CSS-------------- */
-
-.navbar {
-  overflow: hidden;
-  flex: 3;
-  order: 1;
-  margin-bottom: 3px;
-  margin-right: 50px;
-  padding: 0;
-  list-style-type: none;
+body {
+  overflow: scroll;
+}
+nav {
+  display: flex;
+  position: absolute;
+  z-index: 10;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 8vh;
+  top: 0;
+  padding: 10px 10px;
+  background-color: rgba(0, 0, 0, 0);
+  font-family: sans-serif;
 }
 
-.navbar-item {
-  display: block;
-  overflow: hidden;
+.navbar-links {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 60%;
   float: right;
-  padding: 5px 16px;
-  margin: 10px 0px;
 }
 
 .navbar-item a {
-  color: var(--five);
-  font-size: large;
-  text-align: center;
-  font-family: "optima";
   text-decoration: none;
+  color: white;
+  padding: 50% 0%;
 }
 
 .navbar .icon {
   display: none;
+  transition: all 0.5s ease;
 }
 
-.navbar-item:hover .navbar-item a {
-  border-bottom: 3px solid var(--five);
-}
-
-.navbar-item a:hover {
-  border-bottom: 3px solid var(--five);
-}
-
-.navbar-item:hover .navbar-dropdown-item-wrapper {
-  display: block;
-}
-
-.navbar-dropdown-item-wrapper {
+.navbar-dropdown-wrapper {
   display: none;
+}
+
+.navbar-item:hover .navbar-dropdown-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
   position: absolute;
-  background-color: rgba(255, 255, 255, 0.2);
-  z-index: 1;
+  top: 8vh;
+  width: 150px;
 }
 
-.navbar-dropdown-item a {
-  float: none;
-  opacity: 1;
-  padding: 10px;
-  margin: 0px 5px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-  border: none;
-}
-
-.navbar-dropdown-item a:hover {
-  background-color: var(--five);
-  color: white;
-  border: none;
+.navbar-dropdown-item {
+  padding: 10px 10px;
+  margin-left: 20px;
 }
 
 .navbar-searchbar {
@@ -84,95 +71,212 @@
 }
 
 /* ----------MOBILE NAVBAR------------- */
-@media screen and (max-width: 600px) {
+@media screen and (max-device-width: 480px) and (orientation: portrait) {
   .navbar .icon {
-    position: fixed;
-    float: right;
     display: block;
-    padding: 10px;
-    top: 10px;
-    right: 10px;
-    z-index: 1;
-  }
-
-  .navbar-item a {
-    display: none;
-  }
-
-  .navbar.responsive {
-    position: relative;
-    overflow: hidden;
   }
 
   .navbar.responsive .icon {
-    position: fixed;
-    display: block;
-    padding: 10px;
-    top: 10px;
-    right: 10px;
-    z-index: 1;
+    transform: rotate(90deg);
+  }
+
+  .navbar-links {
+    position: absolute;
+    right: 0px;
+    height: 92vh;
+    top: 8vh;
+    background-color: var(--one);
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.5s ease-in;
+  }
+
+  .navbar.responsive body {
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+
+  .navbar.responsive .navbar-links {
+    transition: transform 0.5s ease-in;
+    transform: translateX(0%);
+  }
+
+  .navbar-item {
+    opacity: 0;
   }
 
   .navbar.responsive .navbar-item {
-    float: none;
+    animation-name: navTransition;
+    animation-duration: 1.5s;
   }
 
-  .navbar.responsive .navbar-item a {
+  .navbar-dropdown-wrapper {
     display: block;
-    text-align: center;
   }
 
-  .navbar.responsive .navbar-dropdown-item-wrapper {
-    display: block;
-    position: relative;
-    left: 50%;
+  .navbar-item:hover .navbar-dropdown-wrapper {
+    display: none;
   }
-  .navbar.responsive .navbar-dropdown-item-wrapper a {
-    text-align: left;
+
+  .navbar-dropdown-item {
+    margin-left: 5px;
+  }
+
+  @keyframes navTransition {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
 }
 
 /* --------------PAGE CSS------------- */
 
 .page {
-  background: var(--four);
-  flex: 3;
-  order: 2;
+  margin: 0;
 }
 
 /* -----------BLOG CSS ------------- */
 
-.blog {
-}
-
-.blog-body {
-}
-
 .feed {
+  margin: 0 5vw;
+  margin-top: 8vh;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  font-family: "Roboto Condensed", sans-serif;
+  color: var(--five);
 }
 
 .feed-item {
+  width: 300px;
+  height: auto;
+  display: inline-block;
+  margin: 10px;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.feed-item .main {
+  border-bottom: 2px solid var(--five);
+  margin: 10px 10px;
+  padding-bottom: 5px;
+  text-align: left;
+}
+
+.feed-item .info {
+  text-align: left;
+  margin: 0 10px;
+}
+
+.image-wrapper {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  padding-bottom: 50%;
+  height: 0;
 }
 
 .feed-item img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+}
+
+.feed-item .info img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  position: relative;
 }
 
 .feed-item h1 {
+  font-weight: 700;
+}
+
+.feed-item h2 {
+  font-weight: 400;
+  font-style: italic;
+}
+
+.feed-item h3 {
+  font-weight: 400;
+  margin-top: 5px;
+}
+
+.feed-item p {
+  font-weight: 300;
+  margin: 5px 0px;
 }
 
 .feed-item button {
 }
 
+.feed-item a {
+  text-decoration: none;
+  color: var(--one);
+}
+
 .post {
+  font-family: "Roboto Condensed", sans-serif;
 }
 
 .header {
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+  text-align: center;
+  position: relative;
+  display: inline-block;
 }
 
-.header-item {
+.header img {
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+}
+
+.header-text {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  padding: 5%;
+}
+
+.header h1 {
+  font-weight: 700;
+  font-size: 15vw;
+}
+
+.header h2 {
+  font-weight: 400;
+  font-style: italic;
+  font-size: 10vw;
+}
+
+.header h3 {
+}
+
+.header p {
+  font-weight: 300;
+  font-size: 3vw;
 }
 
 .content {
+  margin: 0 5vw;
 }
 
 .progress-bar {
@@ -195,4 +299,31 @@
 }
 
 .subscribe-popup {
+}
+
+/* ----------UTIL CSS---------- */
+h1 {
+  margin: 0;
+}
+
+h2 {
+  margin: 0;
+}
+
+h3 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.overlay {
+  z-index: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  background: rgba(0, 0, 0, 0.7); /*can be anything, of course*/
 }

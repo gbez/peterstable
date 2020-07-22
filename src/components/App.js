@@ -11,6 +11,7 @@ import { ToastContainer } from "react-toastify";
 import Login from "./auth/login";
 import ForgotPassword from "./auth/forgotPassword";
 //Components
+import Home from "./public/pages/Home";
 import Journal from "./public/pages/Journal";
 import Library from "./public/pages/Library";
 import Repository from "./public/pages/Repository";
@@ -39,6 +40,19 @@ class App extends Component {
         />
         <Router>
           <Switch>
+            <PublicRoute
+              exact
+              path="/"
+              component={Home}
+              queryPrepend="/blogposts/alias"
+            />
+
+            <PublicRoute
+              exact
+              path="/home"
+              component={Home}
+              queryPrepend="/blogposts/alias"
+            />
             {/*---------------------Journal Routes---------------------*/}
             <PublicRoute
               path="/journal"

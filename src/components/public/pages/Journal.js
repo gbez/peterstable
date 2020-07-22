@@ -18,7 +18,6 @@ class Journal extends Component {
       toExtract = [
         { field: "title", tag: "h1" },
         { field: "subtitle", tag: "h2" },
-        { field: "description", tag: "h3" },
       ];
       toRender = <Post extract={toExtract} />;
     } else {

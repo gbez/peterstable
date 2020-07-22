@@ -26,20 +26,28 @@ class Post extends Component {
         {post.length != 0 && (
           <div className="post">
             <div className="progress-bar" />
-            <div className="header">
-              {this.props.extract.map((el) => (
-                <PostField
-                  key={i++}
-                  tag={el.tag}
-                  field={el.field}
-                  post={post}
-                />
-              ))}
-              <p>{post.readableDate}</p>
-              <p>{post.readingTime.text}</p>
-              <p>
-                {post.author.firstName} {post.author.lastName}
-              </p>
+            <div
+              style={{ backgroundImage: `url(${post.thumbnail})` }}
+              className="header"
+            >
+              <div className="overlay"></div>
+              <div className="header-text">
+                {this.props.extract.map((el) => (
+                  <PostField
+                    key={i++}
+                    tag={el.tag}
+                    field={el.field}
+                    post={post}
+                  />
+                ))}
+                <br />
+                <p>
+                  {post.readableDate} | {post.readingTime.text}
+                </p>
+                <p>
+                  <b>By:</b> {post.author.firstName} {post.author.lastName}
+                </p>
+              </div>
             </div>
             <Content content={post.content} />
           </div>
