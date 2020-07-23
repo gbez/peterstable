@@ -5,17 +5,7 @@ import FooterLinks from "./FooterLinks";
 const Footer = (props) => {
   return (
     <div className="footer">
-      <p>Footer</p>
-      <ul>
-        <li>
-          <FooterItem />
-        </li>
-      </ul>
-      <ul>
-        <li>
-          <FooterLinks />
-        </li>
-      </ul>
+      <p>&copy; Copyright {new Date().getFullYear()}, Grant Besner</p>
     </div>
   );
 };

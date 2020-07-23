@@ -11,11 +11,17 @@ import { loadFeed } from "../../../../../actions";
 import { getSafe } from "../helpers";
 import PostField from "./PostField";
 import Content from "./Content";
+import ProgressBar from "./ProgressBar";
+import IconScroll from "./IconScroll";
 
 class Post extends Component {
+  constructor(props) {
+    super(props);
+  }
   componentDidMount() {
     this.props.loadFeed();
   }
+
   render() {
     let post = getSafe(() => this.props.feed.data.data[0], []);
     let i = 0;
@@ -25,10 +31,10 @@ class Post extends Component {
         <div className="subscribe-button"></div>
         {post.length != 0 && (
           <div className="post">
-            <div className="progress-bar" />
             <div
               style={{ backgroundImage: `url(${post.thumbnail})` }}
               className="header"
+              id="header"
             >
               <div className="overlay"></div>
               <div className="header-text">
@@ -48,7 +54,9 @@ class Post extends Component {
                   <b>By:</b> {post.author.firstName} {post.author.lastName}
                 </p>
               </div>
+              <IconScroll class="fa fa-arrow-circle-down" name="content" />
             </div>
+            <ProgressBar />
             <Content content={post.content} />
           </div>
         )}

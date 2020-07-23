@@ -1,13 +1,19 @@
-import React, { Component } from "react";
-{
-  /* Do some custom parsing  */
-}
+import React, { Fragment, Component } from "react";
+import ReactTooltip from "react-tooltip";
+
 class Content extends Component {
   componentDidMount() {
     document.getElementById("content").innerHTML = `${this.props.content}`;
   }
+
   render() {
-    return <div id="content" className="content"></div>;
+    return (
+      <Fragment>
+        <div id="content" className="content"></div>
+        <p data-tip="hello world">Hover Me</p>
+        <ReactTooltip id="main" place="top" type="dark" />
+      </Fragment>
+    );
   }
 }
 

@@ -55,6 +55,7 @@ class App extends Component {
             />
             {/*---------------------Journal Routes---------------------*/}
             <PublicRoute
+              exact
               path="/journal"
               component={Journal}
               queryPrepend="/blogposts/alias"
@@ -62,16 +63,12 @@ class App extends Component {
 
             <PublicRoute
               exact
-              path="/journal/:year/:month/:slug"
+              path="/journal/:subpage/:year/:month/:slug"
               component={Journal}
               queryPrepend="/blogposts/alias"
+              navbarDisable="yep"
             />
 
-            <PublicRoute
-              path="/journal"
-              component={Journal}
-              queryPrepend="/blogposts/alias"
-            />
             <PublicRoute exact path="/journal/musings" component={Journal} />
             <PublicRoute exact path="/journal/poetry" component={Journal} />
             <PublicRoute exact path="/journal/bulletin" component={Journal} />
