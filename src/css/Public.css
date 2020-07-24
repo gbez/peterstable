@@ -1,4 +1,5 @@
 :root {
+  --clear: rgba(0, 0, 0, 0);
   --one: #ffa69e;
   --two: #faf3dd;
   --three: #b8f2e6;
@@ -8,6 +9,11 @@
 }
 
 /* ------------NAVBAR CSS-------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body {
   overflow: scroll;
 }
@@ -20,9 +26,12 @@ nav {
   width: 100%;
   height: 8vh;
   top: 0;
-  padding: 10px 0px;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: white;
   font-family: sans-serif;
+}
+
+nav a {
+  text-decoration: none;
 }
 
 .navbar-links {
@@ -33,10 +42,20 @@ nav {
   float: right;
 }
 
+.navbar-item {
+  position: relative;
+}
+
 .navbar-item a {
+  padding: 10px 5px;
+  border-radius: 20% 20%;
   text-decoration: none;
   color: var(--five);
-  padding: 50% 0%;
+}
+
+.navbar-item:hover .nav-item-link {
+  color: white;
+  background-color: darkblue;
 }
 
 .navbar .icon {
@@ -46,10 +65,11 @@ nav {
 
 .navbar-dropdown-wrapper {
   display: none;
-}
-
-.navbar-item:hover .navbar-item a {
-  border-bottom: 1px solid var(--five);
+  background-color: white;
+  border-radius: 0 20% 20%;
+  top: 20px;
+  width: 150px;
+  box-shadow: 0 5px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 .navbar-item:hover .navbar-dropdown-wrapper {
@@ -57,13 +77,19 @@ nav {
   flex-direction: column;
   align-items: left;
   position: absolute;
-  top: 8vh;
-  width: 150px;
 }
 
-.navbar-dropdown-item {
-  padding: 10px 10px;
-  margin-left: 20px;
+.navbar-dropdown-wrapper a {
+  text-decoration: none;
+  color: var(--five);
+}
+
+.navbar-dropdown-wrapper a:hover {
+  color: white;
+  background-color: darkblue;
+}
+
+.navbar-dropdown-item:hover .navbar-dropdown-item {
 }
 
 .navbar-searchbar {
@@ -89,12 +115,14 @@ nav {
     right: 0px;
     height: 92vh;
     top: 8vh;
+    width: 75%;
     background-color: var(--one);
     opacity: 1;
     display: flex;
     flex-direction: column;
     transform: translateX(100%);
     transition: transform 0.5s ease-in;
+    align-items: flex-start;
   }
 
   .navbar.responsive body {
@@ -111,21 +139,57 @@ nav {
     opacity: 0;
   }
 
+  .navbar-dropdown-wrapper a {
+    display: block;
+  }
+
   .navbar.responsive .navbar-item {
     animation-name: navTransition;
     animation-duration: 1.5s;
   }
 
+  .navbar.responsive .navbar-item:hover .nav-item-link {
+    color: blue;
+    background-color: var(--clear);
+  }
+
+  .navbar-item .nav-item-link {
+    font-size: 30px;
+    padding: 0;
+    color: blue;
+    background-color: none;
+  }
+
+  .navbar.responsive .navbar-item {
+    margin-left: 20%;
+  }
+
+  .navbar-dropdown-wrapper {
+    background-color: var(--clear);
+    box-shadow: none;
+  }
+
+  .navbar.responsive .navbar-dropdown-wrapper {
+    display: inline-block;
+    top: 0;
+    position: relative;
+    box-shadow: none;
+  }
+
+  .navbar-dropdown-wrapper a {
+    color: purple;
+    padding: 0;
+    padding: 5px 10px;
+    font-size: 20px;
+  }
+
+  .navbar.responsive .navbar-dropdown-wrapper a:hover {
+    color: purple;
+    background-color: var(--clear);
+  }
+
   .navbar-dropdown-wrapper {
     display: block;
-  }
-
-  .navbar-item:hover .navbar-dropdown-wrapper {
-    display: none;
-  }
-
-  .navbar-dropdown-item {
-    margin-left: 5px;
   }
 
   @keyframes navTransition {
@@ -143,19 +207,40 @@ nav {
 /* --------------PAGE CSS------------- */
 
 .page {
-  margin: 0;
+  margin-bottom: 100px;
+  padding-bottom: 20px;
+}
+
+/* --------------HOME CSS------------- */
+
+.home {
+  margin-top: 8vh;
 }
 
 /* -----------BLOG CSS ------------- */
 
 .feed {
-  margin: 0 5vw;
   margin-top: 8vh;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
   font-family: "Roboto Condensed", sans-serif;
   color: var(--five);
+}
+
+.section {
+  margin: 2vh 8vw;
+  padding: 2vh 3vh;
+  color: var(--five);
+  position: relative;
+}
+
+.section-title {
+  margin: 10px 20px;
+}
+
+.section-content {
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
 
 .feed-item {
@@ -378,10 +463,14 @@ nav {
 
 .footer {
   font-family: "Roboto Condensed", sans-serif;
-  position: relative;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 100px;
+  width: 100%;
+  overflow: hidden;
   text-align: center;
   margin: 0;
-  padding: 10px 10px;
 }
 
 .footer-item {
@@ -418,11 +507,17 @@ p {
 }
 
 .overlay {
-  z-index: 0;
+  z-index: 5;
   height: 100%;
   width: 100%;
   position: absolute;
   top: 0;
   left: 0px;
-  background: rgba(0, 0, 0, 0.7); /*can be anything, of course*/
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.line {
+  width: 100%;
+  height: 2px;
+  background-color: var(--five);
 }

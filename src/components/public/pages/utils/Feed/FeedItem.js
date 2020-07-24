@@ -31,7 +31,7 @@ function FeedItem(props) {
             })}
           </p>
           <p>
-            <b>Reading Time:</b> {props.item.readingTime.text}
+            <b>Reading Time:</b> {/*props.item.readingTime.text*/}
           </p>
           <p>
             <b>Author:</b> {props.item.author.firstName}{" "}

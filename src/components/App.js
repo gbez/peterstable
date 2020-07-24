@@ -44,14 +44,14 @@ class App extends Component {
               exact
               path="/"
               component={Home}
-              queryPrepend="/blogposts/alias"
+              queryOverride="/blogposts"
             />
 
             <PublicRoute
               exact
               path="/home"
               component={Home}
-              queryPrepend="/blogposts/alias"
+              queryOverride="/blogposts/alias/journal"
             />
             {/*---------------------Journal Routes---------------------*/}
             <PublicRoute

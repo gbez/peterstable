@@ -12,16 +12,21 @@ class Journal extends Component {
   render() {
     let toRender;
     let toExtract;
-    //If there is more than three / in the path, it is a post
+    const sections = [
+      {
+        name: "Featured",
+        filter: { key: "page", value: "journal" },
+        numItems: 3,
+      },
+    ];
     if (numSlash(4)) {
-      //Items to pull out of Post
       toExtract = [
         { field: "title", tag: "h1" },
         { field: "subtitle", tag: "h2" },
       ];
       toRender = <Post extract={toExtract} />;
     } else {
-      toRender = <Feed />;
+      toRender = <Feed sections={sections} />;
     }
     return <div className="journal">{toRender}</div>;
   }
