@@ -47,9 +47,13 @@ class Post extends Component {
                   />
                 ))}
                 <br />
-                <p>
-                  {post.readableDate} | {post.readingTime.text}
-                </p>
+                {post.content ? (
+                  <p>
+                    {post.readableDate} | {post.readingTime.text}
+                  </p>
+                ) : (
+                  <p></p>
+                )}
                 <p>
                   <b>By:</b> {post.author.firstName} {post.author.lastName}
                 </p>

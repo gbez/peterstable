@@ -56,23 +56,43 @@ class App extends Component {
             {/*---------------------Journal Routes---------------------*/}
             <PublicRoute
               exact
-              path="/journal"
-              component={Journal}
-              queryPrepend="/blogposts/alias"
-            />
-
-            <PublicRoute
-              exact
               path="/journal/:subpage/:year/:month/:slug"
               component={Journal}
               queryPrepend="/blogposts/alias"
               navbarDisable="yep"
             />
 
-            <PublicRoute exact path="/journal/musings" component={Journal} />
-            <PublicRoute exact path="/journal/poetry" component={Journal} />
-            <PublicRoute exact path="/journal/bulletin" component={Journal} />
-            <PublicRoute exact path="/journal/published" component={Journal} />
+            <PublicRoute
+              exact
+              path="/journal/articles"
+              component={Journal}
+              queryPrepend="/blogposts/alias"
+            />
+            <PublicRoute
+              exact
+              path="/journal/bulletin"
+              component={Journal}
+              queryPrepend="/blogposts/alias"
+            />
+            <PublicRoute
+              exact
+              path="/journal/musings"
+              component={Journal}
+              queryPrepend="/blogposts/alias"
+            />
+            <PublicRoute
+              exact
+              path="/journal/poetry"
+              component={Journal}
+              queryPrepend="/blogposts/alias"
+            />
+
+            <PublicRoute
+              exact
+              path="/journal"
+              component={Journal}
+              queryPrepend="/blogposts/alias"
+            />
 
             {/*---------------------Library Routes---------------------*/}
 
@@ -80,6 +100,7 @@ class App extends Component {
               exact
               path="/library"
               component={Library}
+              queryPrepend="/blogposts/alias"
               footerDisable="yep"
             />
 
@@ -87,6 +108,7 @@ class App extends Component {
               exact
               path="/library/:category"
               component={Library}
+              queryPrepend="/blogposts/alias"
               footerDisable="yep"
             />
 
@@ -94,6 +116,7 @@ class App extends Component {
               exact
               path="/library/queue"
               component={Library}
+              queryPrepend="/blogposts/alias"
               footerDisable="yep"
             />
 
@@ -101,6 +124,7 @@ class App extends Component {
               exact
               path="/library/book/:slug"
               component={Library}
+              queryPrepend="/blogposts/alias"
               footerDisable="yep"
             />
 
@@ -112,20 +136,27 @@ class App extends Component {
               exact
               path="/repository/snippets"
               component={Repository}
+              queryPrepend="/blogposts/alias"
             />
 
             <PublicRoute
               exact
               path="/repository/snippets/:year/:month/:slug"
               component={Repository}
+              queryPrepend="/blogposts/alias"
             />
 
-            <PublicRoute exact path="/repository/docs" component={Repository} />
+            <PublicRoute
+              exact
+              path="/repository/documentation"
+              component={Repository}
+            />
 
             <PublicRoute
               exact
               path="/repository/docs/:year/:month/:slug"
               component={Repository}
+              queryPrepend="/blogposts/alias"
             />
 
             {/*---------------------Auditorium Routes---------------------*/}

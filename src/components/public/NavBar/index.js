@@ -47,10 +47,10 @@ class NavBar extends Component {
               url="/journal"
               childClass="navbar-dropdown-wrapper"
             >
-              <a href="/articles">Articles</a>
-              <a href="/bulletin">Bulletin</a>
-              <a href="/musings">Musings</a>
-              <a href="/poetry">Poetry</a>
+              <a href="/journal/articles">Articles</a>
+              <a href="/journal/bulletin">Bulletin</a>
+              <a href="/journal/musings">Musings</a>
+              <a href="/journal/poetry">Poetry</a>
             </NavBarItem>
 
             <NavBarItem
@@ -58,8 +58,8 @@ class NavBar extends Component {
               url="/library"
               childClass="navbar-dropdown-wrapper"
             >
-              <a href="/books">Books</a>
-              <a href="/queue">Queue</a>
+              <a href="/library/books">Books</a>
+              <a href="/library/queue">Queue</a>
             </NavBarItem>
 
             <NavBarItem
@@ -67,9 +67,9 @@ class NavBar extends Component {
               url="/repository"
               childClass="navbar-dropdown-wrapper"
             >
-              <a href="/documentation">Documentation</a>
-              <a href="/projects">Projects</a>
-              <a href="/snippets">Snippets</a>
+              <a href="/repository/documentation">Documentation</a>
+              <a href="/repository/projects">Projects</a>
+              <a href="/repository/snippets">Snippets</a>
             </NavBarItem>
 
             <NavBarItem
@@ -77,8 +77,8 @@ class NavBar extends Component {
               url="/auditorium"
               childClass="navbar-dropdown-wrapper"
             >
-              <a href="/conservatory">Conservatory</a>
-              <a href="/playlists">Playlists</a>
+              <a href="/auditorium/conservatory">Conservatory</a>
+              <a href="/auditorium/playlists">Playlists</a>
             </NavBarItem>
 
             <NavBarItem text="About" url="/about" />
