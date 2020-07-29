@@ -9,6 +9,7 @@ import {
   RESET_QUERY,
   LOGIN,
   LOGOUT,
+  TOGGLE_MODAL,
 } from "./actionTypes";
 
 import DimSumCart from "../apis/DimSumCartAPI";
@@ -20,14 +21,23 @@ export const resetFeed = () => {
   };
 };
 
-export const loadFeed = () => async (dispatch, getState) => {
-  const response = await DimSumCart.get(getState().query)
+export const loadFeed = (queryOverride) => async (dispatch, getState) => {
+  const response = await DimSumCart.get(
+    queryOverride ? queryOverride : getState().query
+  )
     .then((response) => {
       dispatch({ type: LOAD_FEED, payload: response });
     })
     .catch((e) => {
       toast.error(e.response.data.message);
     });
+};
+
+export const toggleModal = (modalContent) => {
+  return {
+    type: TOGGLE_MODAL,
+    payload: modalContent,
+  };
 };
 
 // Selected Object

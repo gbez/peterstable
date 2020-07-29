@@ -10,6 +10,7 @@ import {
   RESET_QUERY,
   LOGIN,
   LOGOUT,
+  TOGGLE_MODAL,
 } from "../actions/actionTypes";
 
 const feedReducer = (feed = [], action) => {
@@ -19,6 +20,17 @@ const feedReducer = (feed = [], action) => {
     return null;
   }
   return feed;
+};
+
+const modalReducer = (modalContent = null, action) => {
+  if (action.type === TOGGLE_MODAL) {
+    if (action.payload) {
+      return action.payload;
+    } else {
+      return null;
+    }
+  }
+  return modalContent;
 };
 
 const selectedObjectReducer = (selectedObject = null, action) => {
@@ -59,6 +71,7 @@ const authReducer = (user = null, action) => {
 
 export default combineReducers({
   feed: feedReducer,
+  modal: modalReducer,
   selectedObject: selectedObjectReducer,
   page: pageReducer,
   query: queryReducer,

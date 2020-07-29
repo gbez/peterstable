@@ -39,7 +39,10 @@ class NavBar extends Component {
       <div className={this.state.navbarClass}>
         <nav>
           <a href="/">
-            <h2>Title</h2>
+            <img
+              alt="home"
+              src="http://www.grantbesner.com/uploads/3/7/3/5/37354527/published/photo.png?1496050118"
+            />
           </a>
           <div className="navbar-links">
             <NavBarItem

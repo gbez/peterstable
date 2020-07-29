@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import DocumentModal from "./DocumentModal/DocumentModal";
-import AuthModal from "./AuthModal/AuthModal";
+import { connect } from "react-redux";
+import { toggleModal } from "../../../actions";
 
 class Modal extends Component {
   constructor(props) {
@@ -46,28 +46,13 @@ class Modal extends Component {
   }
 
   render() {
-    let modalChild;
-    const modalType = this.props.modalSettings.modalType;
-    switch (modalType) {
-      case "document":
-        modalChild = (
-          <DocumentModal
-            ref={this.ref}
-            toggleModal={this.props.toggleModal}
-            document={this.props.document}
-          />
-        );
-        break;
-      case "auth":
-        modalChild = (
-          <AuthModal ref={this.ref} toggleModal={this.props.toggleModal} />
-        );
-        break;
-      default:
-        modalChild = <DocumentModal ref={this.ref} />;
-    }
-    return ReactDOM.createPortal(modalChild, this.el);
+    let modalContent = <div className="fake-modal">{this.props.children}</div>;
+    return ReactDOM.createPortal(modalContent, this.el);
   }
 }
 
-export default Modal;
+const mapStateToProps = (state) => {
+  return { modal: state.modal };
+};
+
+export default connect(mapStateToProps, { toggleModal })(Modal);

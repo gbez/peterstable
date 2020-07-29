@@ -10,13 +10,16 @@ import { ToastContainer } from "react-toastify";
 //Auth
 import Login from "./auth/login";
 import ForgotPassword from "./auth/forgotPassword";
-//Components
+//Public Components
 import Home from "./public/pages/Home";
 import Journal from "./public/pages/Journal";
 import Library from "./public/pages/Library";
 import Repository from "./public/pages/Repository";
 import Auditorium from "./public/pages/Auditorium";
-import Dashboard from "./private";
+import About from "./public/pages/About";
+//Private Components
+import Dashboard from "./private/pages/Dashboard";
+import Blogposts from "./private/pages/Blogposts";
 //CSS
 import "../css/App.css";
 import "../css/Public.css";
@@ -134,6 +137,32 @@ class App extends Component {
 
             <PublicRoute
               exact
+              path="/repository/documentation"
+              component={Repository}
+            />
+
+            <PublicRoute
+              exact
+              path="/repository/documentation/:year/:month/:slug"
+              component={Repository}
+              queryPrepend="/blogposts/alias"
+            />
+
+            <PublicRoute
+              exact
+              path="/repository/projects"
+              component={Repository}
+            />
+
+            <PublicRoute
+              exact
+              path="/repository/projects/:year/:month/:slug"
+              component={Repository}
+              queryPrepend="/blogposts/alias"
+            />
+
+            <PublicRoute
+              exact
               path="/repository/snippets"
               component={Repository}
               queryPrepend="/blogposts/alias"
@@ -142,19 +171,6 @@ class App extends Component {
             <PublicRoute
               exact
               path="/repository/snippets/:year/:month/:slug"
-              component={Repository}
-              queryPrepend="/blogposts/alias"
-            />
-
-            <PublicRoute
-              exact
-              path="/repository/documentation"
-              component={Repository}
-            />
-
-            <PublicRoute
-              exact
-              path="/repository/docs/:year/:month/:slug"
               component={Repository}
               queryPrepend="/blogposts/alias"
             />
@@ -187,14 +203,20 @@ class App extends Component {
               component={Auditorium}
             />
 
+            {/*---------------------Static Routes---------------------*/}
+            <PublicRoute exact path="/about" component={About} />
+
             {/*---------------------Auth Routes---------------------*/}
 
             <Route path="/login" component={Login} />
             <Route path="/forgotPassword" component={ForgotPassword} />
+            <Route path="/resetPassword" component={ForgotPassword} />
 
             {/*---------------------Private Routes---------------------*/}
 
             <ProtectedRoute path="/me" component={Dashboard} />
+            <ProtectedRoute path="/dashboard" component={Dashboard} />
+            <ProtectedRoute path="/blogposts" component={Blogposts} />
 
             {/*---------------------Error Routes---------------------*/}
 

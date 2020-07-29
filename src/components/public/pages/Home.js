@@ -5,7 +5,7 @@ class Home extends Component {
   render() {
     const sections = [
       {
-        name: "Featured",
+        name: "TEST",
         filter: { key: "page", value: "journal" },
         numItems: 1,
       },

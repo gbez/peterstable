@@ -12,3 +12,5 @@ export const RESET_QUERY = "RESET_QUERY";
 
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
+
+export const TOGGLE_MODAL = "TOGGLE_MODAL";
