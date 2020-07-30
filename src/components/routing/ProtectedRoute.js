@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { restoreUser } from "../../actions";
 import { Redirect } from "react-router-dom";
 import { isExpired } from "../utilities/helpers";
-import { Fragment } from "react";
 
 class ProtectedRoute extends Component {
   render() {
@@ -11,6 +12,7 @@ class ProtectedRoute extends Component {
     if (token) {
       if (!isExpired(token)) {
         isAuthenticated = true;
+        this.props.restoreUser();
       }
     }
     return isAuthenticated ? (
@@ -25,4 +27,4 @@ class ProtectedRoute extends Component {
   }
 }
 
-export default ProtectedRoute;
+export default connect(null, { restoreUser })(ProtectedRoute);

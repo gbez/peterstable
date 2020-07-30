@@ -31,3 +31,11 @@ export function getSafe(fn, defaultVal) {
 export function numSlash(num) {
   return window.location.pathname.split("/").length - 1 > num;
 }
+
+export function isObject(data) {
+  return typeof data !== "boolean" ? true : false;
+}
+
+export function firstLetterToUpper(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}

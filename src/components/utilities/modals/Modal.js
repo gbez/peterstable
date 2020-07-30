@@ -17,12 +17,15 @@ class Modal extends Component {
     this.modalRoot.appendChild(this.el);
     window.addEventListener("keyup", this.handleKeyUp, false);
     document.addEventListener("click", this.handleOutsideClick, false);
+    //listen for post request...if something is submitted close modal?
+    //Do CSS stuff to document...no scroll, overlay background
   }
 
   componentWillUnmount() {
     this.modalRoot.removeChild(this.el);
     window.removeEventListener("keyup", this.handleKeyUp, false);
     document.removeEventListener("click", this.handleOutsideClick, false);
+    //Change CSS stuff back to original
   }
 
   handleKeyUp(e) {

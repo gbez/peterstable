@@ -12,5 +12,11 @@ export const RESET_QUERY = "RESET_QUERY";
 
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
+export const RESTORE_USER = "RESTORE_USER";
 
 export const TOGGLE_MODAL = "TOGGLE_MODAL";
+export const TOGGLE_MODAL_WITH_DATA = "TOGGLE_MODAL_WITH_DATA";
+
+export const CREATE_DOCUMENT = "CREATE_DOCUMENT";
+export const UPDATE_DOCUMENT = "CREATE_DOCUMENT";
+export const DELETE_DOCUMENT = "DELETE_DOCUMENT";

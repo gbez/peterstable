@@ -8,7 +8,6 @@ import FeedItem from "./FeedItem";
 class Feed extends Component {
   constructor(props) {
     super(props);
-    this.filterFeed = this.filterFeed.bind(this);
   }
   componentDidMount() {
     this.props.loadFeed();

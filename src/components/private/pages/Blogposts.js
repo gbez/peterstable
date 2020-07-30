@@ -4,14 +4,14 @@ import { loadFeed, toggleModal } from "../../../actions";
 import { getSafe, filterFeed } from "../../utilities/helpers";
 import Modal from "../../utilities/modals/Modal";
 import DocumentTable from "../../utilities/tables/DocumentTable";
+import DocumentForm from "../../utilities/forms/DocumentForm";
 
 class Blogposts extends Component {
   componentDidMount() {
-    this.props.loadFeed("/blogposts?sort=published_at");
+    this.props.loadFeed("/blogposts");
   }
 
   render() {
-    let modalContent = <h1>Hi</h1>;
     var distinct = getSafe(() => this.props.feed.data.distinct, []);
     var blogposts = getSafe(() => this.props.feed.data.data, []);
     var pending = filterFeed(blogposts, { key: "status", value: "pending" });
@@ -19,22 +19,67 @@ class Blogposts extends Component {
       key: "status",
       value: "published",
     });
+    const formInputs = [
+      { name: "title", type: "text", label: "Title" },
+      { name: "subtitle", type: "text", label: "Subtitle" },
+      { name: "publish_date", type: "date", label: "Date" },
+      { name: "description", type: "text", label: "Description" },
+      {
+        name: "page",
+        type: "select",
+        label: "Page",
+        options: distinct["page"],
+      },
+      {
+        name: "subpage",
+        type: "select",
+        label: "Subpage",
+        options: distinct.subpage,
+      },
+      {
+        name: "categories",
+        type: "select",
+        label: "Categories",
+        options: distinct.categories,
+      },
+      {
+        name: "tags",
+        type: "select",
+        label: "Tags",
+        options: distinct.categories,
+      },
+      {
+        name: "accessibleTo",
+        type: "select",
+        label: "Restrict To",
+        options: ["all"],
+      },
+    ];
+    let modalContent = (
+      <DocumentForm destination="/blogposts" formInputs={formInputs} />
+    );
 
     return (
       <Fragment>
-        {this.props.modal != null && <Modal>{modalContent}</Modal>}
+        {this.props.modal && <Modal>{modalContent}</Modal>}
         <div className="blogposts">
-          <button onClick={() => this.props.toggleModal("create")}>
+          <button onClick={() => this.props.toggleModal()}>
             Create Blogpost
           </button>
           <div className="section">
             <h2 className="section-title">Pending Posts</h2>
-            <DocumentTable data={pending} fields={["title", "subtitle"]} />
+            <DocumentTable
+              data={pending}
+              fields={["title", "subtitle", "readableDate", "views"]}
+            />
           </div>
           <br />
           <div className="section">
             <h2 className="section-title">Published Posts</h2>
-            <DocumentTable data={published} fields={["title", "subtitle"]} />
+            <DocumentTable
+              data={published}
+              fields={["title", "subtitle", "readableDate", "views"]}
+            />
           </div>
         </div>
       </Fragment>

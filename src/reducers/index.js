@@ -4,13 +4,16 @@ import {
   RESET_FEED,
   SET_PAGE,
   RESET_PAGE,
-  SET_SELECTED_OBJECT,
-  RESET_SELECTED_OBJECT,
   SET_QUERY,
   RESET_QUERY,
   LOGIN,
   LOGOUT,
   TOGGLE_MODAL,
+  TOGGLE_MODAL_WITH_DATA,
+  CREATE_DOCUMENT,
+  UPDATE_DOCUMENT,
+  DELETE_DOCUMENT,
+  RESTORE_USER,
 } from "../actions/actionTypes";
 
 const feedReducer = (feed = [], action) => {
@@ -22,24 +25,33 @@ const feedReducer = (feed = [], action) => {
   return feed;
 };
 
-const modalReducer = (modalContent = null, action) => {
-  if (action.type === TOGGLE_MODAL) {
-    if (action.payload) {
-      return action.payload;
+const modalReducer = (showModal = false, action) => {
+  if (action.type === TOGGLE_MODAL_WITH_DATA) {
+    return action.payload;
+  } else if (action.type === TOGGLE_MODAL) {
+    if (showModal == false) {
+      return true;
     } else {
-      return null;
+      return false;
     }
   }
-  return modalContent;
+
+  return showModal;
 };
 
-const selectedObjectReducer = (selectedObject = null, action) => {
-  if (action.type === SET_SELECTED_OBJECT) {
-    return action.payload;
-  } else if (action.type === RESET_SELECTED_OBJECT) {
-    return null;
+const documentReducer = (document = null, action) => {
+  switch (action.type) {
+    case CREATE_DOCUMENT:
+      return action.payload;
+      break;
+    case UPDATE_DOCUMENT:
+      return action.payload;
+      break;
+    case DELETE_DOCUMENT:
+      return action.payload;
+      break;
   }
-  return selectedObject;
+  return document;
 };
 
 const pageReducer = (page = null, action) => {
@@ -63,6 +75,8 @@ const queryReducer = (query = null, action) => {
 const authReducer = (user = null, action) => {
   if (action.type === LOGIN) {
     return action.payload;
+  } else if (action.type === RESTORE_USER) {
+    return action.payload;
   } else if (action.type === LOGOUT) {
     return null;
   }
@@ -72,7 +86,6 @@ const authReducer = (user = null, action) => {
 export default combineReducers({
   feed: feedReducer,
   modal: modalReducer,
-  selectedObject: selectedObjectReducer,
   page: pageReducer,
   query: queryReducer,
   user: authReducer,
