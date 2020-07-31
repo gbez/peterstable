@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getSafe } from "../helpers";
+import { getSafe, numSlash } from "../helpers";
 import {
   toggleModal,
   createDocument,
@@ -28,7 +28,13 @@ class DocumentForm extends Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.toggleModal();
-    this.props.createDocument(this.props.destination, this.state);
+    console.log(this.props.destination);
+    console.log(numSlash(this.props.destination) > 1);
+    if (numSlash(this.props.destination) > 1) {
+      this.props.updateDocument(this.props.destination, this.state);
+    } else {
+      this.props.createDocument(this.props.destination, this.state);
+    }
   }
 
   render() {
@@ -56,7 +62,11 @@ class DocumentForm extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { modal: state.modal, user: state.user };
+  return {
+    modal: state.modal,
+    user: state.user,
+    destination: state.destination,
+  };
 };
 
 const mapDispatchToProps = {

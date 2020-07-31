@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { isObject, firstLetterToUpper } from "../../helpers";
 
 class FormInput extends Component {
@@ -12,13 +12,21 @@ class FormInput extends Component {
 
   componentDidMount() {
     const { input, data } = this.props;
-    var initValue = isObject(data) ? data[input.name] : "";
+    var initValue = "";
+    if (isObject(data)) {
+      initValue = data[input.name];
+      this.setState({ value: initValue });
+      this.props.onChange(input.name, initValue);
+    }
     this.setState({ value: initValue });
   }
 
   handleChange(e) {
     var name = e.target.name;
     var value = e.target.value;
+    if (this.props.input.type == "inputList") {
+      value = [value];
+    }
     this.props.onChange(name, value);
     this.setState({ value: value });
   }
@@ -50,6 +58,24 @@ class FormInput extends Component {
               <option value={option}>{firstLetterToUpper(option)}</option>
             ))}
           </select>
+        );
+        break;
+      case "inputList":
+        content = (
+          <Fragment>
+            <input
+              name={input.name}
+              type="text"
+              list={input.name}
+              value={this.state.value}
+              onChange={this.handleChange}
+            />
+            <datalist id={input.name}>
+              {input.options.map((option) => (
+                <option>{firstLetterToUpper(option)}</option>
+              ))}
+            </datalist>
+          </Fragment>
         );
         break;
     }

@@ -28,8 +28,8 @@ export function getSafe(fn, defaultVal) {
   }
 }
 
-export function numSlash(num) {
-  return window.location.pathname.split("/").length - 1 > num;
+export function numSlash(string) {
+  return string.split("/").length - 1;
 }
 
 export function isObject(data) {

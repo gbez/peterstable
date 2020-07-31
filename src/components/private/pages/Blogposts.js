@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { loadFeed, toggleModal } from "../../../actions";
+import { loadFeed, toggleModal, setDestination } from "../../../actions";
 import { getSafe, filterFeed } from "../../utilities/helpers";
 import Modal from "../../utilities/modals/Modal";
 import DocumentTable from "../../utilities/tables/DocumentTable";
@@ -38,15 +38,15 @@ class Blogposts extends Component {
       },
       {
         name: "categories",
-        type: "select",
+        type: "inputList",
         label: "Categories",
         options: distinct.categories,
       },
       {
         name: "tags",
-        type: "select",
+        type: "inputList",
         label: "Tags",
-        options: distinct.categories,
+        options: distinct.tags,
       },
       {
         name: "accessibleTo",
@@ -55,15 +55,18 @@ class Blogposts extends Component {
         options: ["all"],
       },
     ];
-    let modalContent = (
-      <DocumentForm destination="/blogposts" formInputs={formInputs} />
-    );
+    let modalContent = <DocumentForm formInputs={formInputs} />;
 
     return (
       <Fragment>
         {this.props.modal && <Modal>{modalContent}</Modal>}
         <div className="blogposts">
-          <button onClick={() => this.props.toggleModal()}>
+          <button
+            onClick={() => {
+              this.props.toggleModal();
+              this.props.setDestination("/blogposts");
+            }}
+          >
             Create Blogpost
           </button>
           <div className="section">
@@ -91,4 +94,10 @@ const mapStateToProps = (state) => {
   return { feed: state.feed, modal: state.modal };
 };
 
-export default connect(mapStateToProps, { loadFeed, toggleModal })(Blogposts);
+const mapDispatchToProps = {
+  loadFeed,
+  toggleModal,
+  setDestination,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Blogposts);

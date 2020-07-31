@@ -13,6 +13,7 @@ import {
   CREATE_DOCUMENT,
   UPDATE_DOCUMENT,
   DELETE_DOCUMENT,
+  SET_DESTINATION,
 } from "./actionTypes";
 
 import DimSumCart from "../apis/DimSumCartAPI";
@@ -139,5 +140,12 @@ export const login = (loginObject) => async (dispatch) => {
 export const logout = () => {
   return {
     type: LOGOUT,
+  };
+};
+
+export const setDestination = (destination) => {
+  return {
+    type: SET_DESTINATION,
+    payload: destination,
   };
 };

@@ -14,6 +14,7 @@ import {
   UPDATE_DOCUMENT,
   DELETE_DOCUMENT,
   RESTORE_USER,
+  SET_DESTINATION,
 } from "../actions/actionTypes";
 
 const feedReducer = (feed = [], action) => {
@@ -83,10 +84,18 @@ const authReducer = (user = null, action) => {
   return user;
 };
 
+const destinationReducer = (destination = "", action) => {
+  if (action.type === SET_DESTINATION) {
+    return action.payload;
+  }
+  return destination;
+};
+
 export default combineReducers({
   feed: feedReducer,
   modal: modalReducer,
   page: pageReducer,
   query: queryReducer,
   user: authReducer,
+  destination: destinationReducer,
 });

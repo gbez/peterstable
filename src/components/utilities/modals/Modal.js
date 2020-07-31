@@ -32,7 +32,6 @@ class Modal extends Component {
     //If the escape key is pressed
     const { toggleModal } = this.props;
     if (e.keyCode === 27) {
-      console.log("ESC PRESSED");
       e.preventDefault();
       toggleModal();
       window.removeEventListener("keyup", this.handleKeyUp, false);
@@ -42,7 +41,6 @@ class Modal extends Component {
   handleOutsideClick(e) {
     const { toggleModal } = this.props;
     if (!ReactDOM.findDOMNode(this).contains(e.target)) {
-      console.log("Pressed Outside");
       toggleModal();
       document.removeEventListener("click", this.handleOutsideClick, false);
     }
