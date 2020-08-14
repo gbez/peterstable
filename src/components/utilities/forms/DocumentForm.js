@@ -26,7 +26,6 @@ class DocumentForm extends Component {
   }
 
   handleSubmit(e) {
-    console.log("handle Submit");
     e.preventDefault();
     this.props.toggleModal();
     if (numSlash(this.props.destination) > 1) {
@@ -41,7 +40,14 @@ class DocumentForm extends Component {
     return (
       <div className="document-form">
         <h1>Form Title</h1>
-        <form onSubmit={this.handleSubmit}>
+        <form
+          onSubmit={this.handleSubmit}
+          onKeyPress={(event) => {
+            if (event.which === 13) {
+              event.preventDefault();
+            }
+          }}
+        >
           <div className="input-wrapper">
             {formInputs.map((formInput) => {
               return (

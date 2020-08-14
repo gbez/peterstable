@@ -49,6 +49,18 @@ class Blogposts extends Component {
         options: distinct.tags,
       },
       {
+        name: "desktopThumbnail",
+        type: "imageCrop",
+        label: "Desktop Thumbnail",
+        aspect: 16 / 9,
+      },
+      {
+        name: "mobileThumbnail",
+        type: "imageCrop",
+        label: "Mobile Thumbnail",
+        aspect: 9 / 16,
+      },
+      {
         name: "accessibleTo",
         type: "select",
         label: "Restrict To",

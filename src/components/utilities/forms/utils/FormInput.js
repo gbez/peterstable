@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import TagInput from "./Custom/TagInput";
+import ImageCropInput from "./Custom/ImageCropInput";
 import { isObject, firstLetterToUpper } from "../../helpers";
 
 class FormInput extends Component {
@@ -81,6 +82,14 @@ class FormInput extends Component {
           />
         );
         break;
+      case "imageCrop":
+        content = (
+          <ImageCropInput
+            name={input.name}
+            aspect={input.aspect}
+            onChange={this.handleChange}
+          />
+        );
     }
     return (
       <div className="formInput">

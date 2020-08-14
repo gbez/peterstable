@@ -1,11 +1,11 @@
 import React, { Component } from "react";
+import ImageCropInput from "../../utilities/forms/utils/Custom/ImageCropInput";
 
 class Dashboard extends Component {
   render() {
     return (
       <div className="dashboard">
-        <h1>Dashboard</h1>
-        <img src="http://localhost:3000/image/blogposts/peter-user-5ea70a895f9b5e462c518400-1597003243138.jpeg" />
+        <ImageCropInput aspect={9 / 16} />
       </div>
     );
   }

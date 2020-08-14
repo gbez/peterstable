@@ -26,6 +26,8 @@ import "../css/Public.css";
 import "../css/Private.css";
 import "../css/fontawesome.min.css";
 import "react-toastify/dist/ReactToastify.css";
+import "react-image-crop/dist/ReactCrop.css";
+
 import { Fragment } from "react";
 
 class App extends Component {
