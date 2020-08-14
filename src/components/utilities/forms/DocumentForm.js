@@ -26,10 +26,9 @@ class DocumentForm extends Component {
   }
 
   handleSubmit(e) {
+    console.log("handle Submit");
     e.preventDefault();
     this.props.toggleModal();
-    console.log(this.props.destination);
-    console.log(numSlash(this.props.destination) > 1);
     if (numSlash(this.props.destination) > 1) {
       this.props.updateDocument(this.props.destination, this.state);
     } else {

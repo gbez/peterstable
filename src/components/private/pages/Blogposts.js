@@ -38,13 +38,13 @@ class Blogposts extends Component {
       },
       {
         name: "categories",
-        type: "inputList",
+        type: "tag",
         label: "Categories",
         options: distinct.categories,
       },
       {
         name: "tags",
-        type: "inputList",
+        type: "tag",
         label: "Tags",
         options: distinct.tags,
       },

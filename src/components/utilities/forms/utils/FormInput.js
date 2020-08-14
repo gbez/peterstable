@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import TagInput from "./Custom/TagInput";
 import { isObject, firstLetterToUpper } from "../../helpers";
 
 class FormInput extends Component {
@@ -8,6 +9,7 @@ class FormInput extends Component {
       value: "",
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleControlledChange = this.handleControlledChange.bind(this);
   }
 
   componentDidMount() {
@@ -24,15 +26,17 @@ class FormInput extends Component {
   handleChange(e) {
     var name = e.target.name;
     var value = e.target.value;
-    if (this.props.input.type == "inputList") {
-      value = [value];
-    }
+    this.props.onChange(name, value);
+    this.setState({ value: value });
+  }
+
+  handleControlledChange(name, value) {
     this.props.onChange(name, value);
     this.setState({ value: value });
   }
 
   render() {
-    let content;
+    var content;
     const { input } = this.props;
     switch (input.type) {
       case "text":
@@ -60,22 +64,21 @@ class FormInput extends Component {
           </select>
         );
         break;
-      case "inputList":
+      case "tag":
+        var value = this.state.value;
+        if (value === "") {
+          value = [];
+          this.setState({ value });
+          break;
+        }
+
         content = (
-          <Fragment>
-            <input
-              name={input.name}
-              type="text"
-              list={input.name}
-              value={this.state.value}
-              onChange={this.handleChange}
-            />
-            <datalist id={input.name}>
-              {input.options.map((option) => (
-                <option>{firstLetterToUpper(option)}</option>
-              ))}
-            </datalist>
-          </Fragment>
+          <TagInput
+            name={input.name}
+            onChange={this.handleChange}
+            suggestions={input.options}
+            tags={this.state.value}
+          />
         );
         break;
     }

@@ -41,7 +41,7 @@ class Modal extends Component {
   handleOutsideClick(e) {
     const { toggleModal } = this.props;
     if (!ReactDOM.findDOMNode(this).contains(e.target)) {
-      toggleModal();
+      //toggleModal();
       document.removeEventListener("click", this.handleOutsideClick, false);
     }
   }
